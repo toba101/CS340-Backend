@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <link href="/phpmotors/css/small.css" rel="stylesheet" media="screen">
-  <!--<link href="../phpmotors/css/large.css" rel="stylesheet" media="screen">-->
+  <link href="/phpmotors/css/large.css" rel="stylesheet" media="screen">
 
 </head>
 
 <body>
 
 <main>
-  <article>
- 
-  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>
-  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php'; ?>
-  <?php  
-  echo $navList;
-  ?>
+  <article>  
+  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?> 
+  <nav>
+    <?php echo $navList; ?>
+  </nav>
+  
+  
 
   <div class="content">
   <h2>Welcome to PHP Motors!</h2><br>
@@ -32,7 +32,7 @@
    </div>
 
    <div class="delorean">
-     <img src="phpmotors/images/site/delorean.jpg" alt="Delorean Car">
+     <img src="/phpmotors/images/site/delorean.jpg" alt="Delorean Car">
    </div> 
 
    <div class="row-container">
@@ -44,24 +44,24 @@
    
     <div class="row-container">
    <div class="grid">
-      <img src="phpmotors/images/upgrades/flux-cap.png" alt="Flux Cap">
+      <img src="/phpmotors/images/upgrades/flux-cap.png" alt="Flux Cap">
        <p> Flux Capacitor </p>
    </div>
 
    <div class="grid">
-       <img src="phpmotors/images/upgrades/flame.jpg" alt="Flame">
+       <img src="/phpmotors/images/upgrades/flame.jpg" alt="Flame">
        <p>Flame</p>
    </div>
   </div>
 
    <div class="row-container">
    <div class="grid">
-       <img src="phpmotors/images/upgrades/bumper_sticker.jpg" alt="Bumper Sticker">
+       <img src="/phpmotors/images/upgrades/bumper_sticker.jpg" alt="Bumper Sticker">
        <p> Bumper Stickers</p>
    </div>
 
    <div class="grid">
-       <img src="phpmotors/images/upgrades/hub-cap.jpg" alt="Hub Cap">
+       <img src="/phpmotors/images/upgrades/hub-cap.jpg" alt="Hub Cap">
        <p>Hub Cap</p>
    </div>
    </div>

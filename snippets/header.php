@@ -1,9 +1,9 @@
 <header>
        <div class="picture1">
-             <img src="phpmotors/images/site/logo.png" alt="PHP Logo">
+             <img src="/phpmotors/images/site/logo.png" alt="PHP Logo">
        </div>
 
        <div class="account">
-           <a href="account.php">My Account</a>
+           <a href="/phpmotors/accounts/index.php?action=login">Login</a>
        </div>
 </header>

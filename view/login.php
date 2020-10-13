@@ -15,11 +15,9 @@
        <img src="phpmotors/images/site/logo.png" alt="PHP Logo">
     </div>
 
-       <div class="account">
-           <a href="account.php">My Account</a>
-       </div>
 
-       <form method="get" action="register.php"> 
+
+       <form method="get" action="account.php"> 
   <fieldset>
   <h3>Sign in:</h3>
   Email: <br>

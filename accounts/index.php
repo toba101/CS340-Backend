@@ -2,9 +2,9 @@
 //This is the accounts controller
 
 // Get the database connection file
-require_once 'library/connections.php';
+require_once '../library/connections.php';
 // Get the PHP Motors model for use as needed
-require_once 'model/main-model.php';
+require_once '../model/main-model.php';
 
 // Get the array of classifications
 $classifications = getClassifications();
@@ -16,7 +16,7 @@ $classifications = getClassifications();
 $navList = '<nav><ul class="navigation">';
 $navList .= "<li><a href='../phpmotors/index.php' title= 'View the PHP Motors home page'>Home</a><li>";
 foreach ($classifications as $classifications) {
-    $navList .= "<li><a href='../phpmotors/index.php?action=" . urlencode($classification['classificationName'])
+    $navList .= "<li><a href='../phpmotors/index.php?action=" .urlencode($classification['classificationName'])
     . "' title=view our $classification[classificationName] product line'<$classification[classificationName]</a></li>";
 }
 $navList .= '</ul>';
@@ -30,10 +30,10 @@ if ($action == NUL) {
 switch ($action) {
     case 'login':
 // case 'template':
-    include 'view/home.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/login.php';
     break;
     case 'registration':
-        include '../view/registration.php';
+        include '../view/register.php';
 
     break;
     default:
