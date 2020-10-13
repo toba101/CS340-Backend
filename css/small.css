@@ -62,17 +62,18 @@ float: left;
     background-color: #4CAF50;
     color: white;
   }
-  
+
   .topnav .icon {
     display: none;
   }
+  
   
   @media screen and (max-width: 600px) {
     .topnav a:not(:first-child) 
     .topnav a.icon {
       float: right;
       display: block;
-    }
+    } 
   }
   
   @media screen and (max-width: 600px) {
