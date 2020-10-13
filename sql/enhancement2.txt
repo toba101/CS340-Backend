@@ -1,0 +1,34 @@
+INSERT INTO `clients`(`clientFirstname`, `clientLastname`, `clientEmail`, `clientPassword`, `clientLevel`, `comment`) 
+values ('Tony', 'Stark', 'tony@starkent.com', 'Iam1ronM@n', 1 , 'I am the real Ironman');
+
+************************************************************************
+
+
+
+******************************************************************
+
+
+
+
+*****************************************************************************
+SELECT
+invModel,
+classificationName
+FROM
+carclassification
+INNER JOIN inventory ON carclassification.classificationId = inventory.classificationId
+WHERE
+carclassification.classificationName = 'SUV'
+
+************************************************************************
+
+
+
+
+
+*****************************************************************************
+
+UPDATE inventory set invImage=concat('/phpmotors',invImage),invThumbnail=concat('/phpmotors',invThumbnail);
+
+
+
