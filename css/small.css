@@ -42,13 +42,12 @@ ul {
 }
 
 
- 
 .topnav {
   overflow: hidden;
   background-color: #333;
   text-decoration:none;
 }
-  
+
   .topnav a {
     float: left;
     display: block;
@@ -181,14 +180,100 @@ footer {
     justify-content: center;
     padding: 5px;
     margin: 0.5rem;
-    font-size: 15px;
-   
+    font-size: 15px; 
 }
- 
+  
+  /* Login view */
+
+  main.form {
+  clear: both;
+  text-align: left;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+  border: 3px solid rgb(200, 226, 241);
+  margin-top: 20px;
+  
+  }
+    
+  fieldset {
+  max-width: 500px;
+  margin: 10px auto;
+  background-color: rgb(139, 154, 223);
+  font-size: 20px;
+  }
+    
+  form h3 {
+  font-size: 20px;
+  font-family: 'Spectral', serif;
+  }
+    
+  input {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 8px 0;
+    border-radius: 4px;
+    padding: 5px;
+    font-size:10px;
+    }
+    .butons {
+      border-radius: 4px;
+      background-color: rgb(14, 151, 231);
+      color: rgb(255, 255, 255);
+      padding-right: 15em;
+      padding-top: 15px;
+      margin-left: 35rem;
+      font-size: 20px;
+      
+  }
+
+    /* Register */
+
+    main.form {
+      clear: both;
+      text-align: left;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border: 3px solid rgb(200, 226, 241);
+      margin-top: 20px;
+      
+      }
+        
+      fieldset {
+      max-width: 500px;
+      margin: 10px auto;
+      background-color: rgb(186, 188, 197);
+      font-size: 20px;
+      }
+        
+      form h3 {
+      font-size: 30px;
+      font-family: 'Spectral', serif;
+      }
+        
+      input {
+        box-sizing: border-box;
+        width: 100%;
+        margin: 8px 0;
+        border-radius: 4px;
+        padding: 5px;
+        font-size:10px;
+        }
+        .butons {
+          border-radius: 4px;
+          background-color: rgb(14, 151, 231);
+          color: rgb(255, 255, 255);
+         font-size: 20px;
+
+         
+      }
+
+
+
   /*----- Clearfix: Force an Element not to collapse -----*/
   .clearfix:after {
     content: "";
     display: table;
     clear: both;
   } 
-  

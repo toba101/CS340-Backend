@@ -3,28 +3,41 @@
 
 <head>
   <meta charset="utf-8">
-  <title> Login Page | Toba A. Obiwale|CSE 340</title>
+  <title> PHP Login HomePage | Toba A. Obiwale|CSE 340</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <link href="/phpmotors/css/small.css" rel="stylesheet" media="screen">
   <link href="/phpmotors/css/large.css" rel="stylesheet" media="screen">
 
 </head>
 
-<header>
-    <div class="picture1">
-       <img src="phpmotors/images/site/logo.png" alt="PHP Logo">
-    </div>
+<body>
 
+<main>
+  <article>  
+  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?> 
+  
+  <nav>
+  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';
+  ?>
+  </nav>
 
-
-       <form method="get" action="account.php"> 
+        
   <fieldset>
-  <h3>Sign in:</h3>
+    <form method="get" action="register.php">
+  <h3>Sign in:</h3><br>
   Email: <br>
   <input type="email" name="mail" placeholder="weather@mail.com"><br>
   Password: <br>
-  <input type="number" name="password" required><br>
-  <input type="submit" value="Submit">
-</fieldset>
+  <input type="password" name="password" required><br>
+</fieldset> 
+
+<div class="butons">
+<button type="submit">Submit</button>
 </div>
-</header>
+
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
+?>
+  </article>
+
+</main>

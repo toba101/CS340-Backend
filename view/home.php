@@ -15,9 +15,10 @@
 
 <main>
   <article>  
-  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?> 
+  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>
+  
   <nav>
-    <?php echo $navList; ?>
+  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php'; ?>
   </nav>
   
   
@@ -27,7 +28,7 @@
   <p><strong>DMC Delorean</strong> <br> 3 Cup holders <br> Superman doors <br> Fuzzy dice!</p>
   </div>
 
-   <div class="button">
+   <div class="buttons">
      <button type="submit">OWN TODAY</button>
    </div>
 
