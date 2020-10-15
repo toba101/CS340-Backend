@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <title>PHP Motors HomePage | Toba A. Obiwale|CSE 340</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link href="/phpmotors/css/small.css" rel="stylesheet" media="screen">
-  <link href="/phpmotors/css/large.css" rel="stylesheet" media="screen">
-
-</head>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/head.php'; ?>
 
 <body>
 
 <main>
   <article> 
+
 
   <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>
  

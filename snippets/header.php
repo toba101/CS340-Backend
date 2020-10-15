@@ -4,6 +4,6 @@
        </div>
 
        <div class="account">
-           <a href="/phpmotors/snippets/view/accounts.php?action=login">My Account</a>
+           <a href='/phpmotors/accounts/index.php?action=login'>My Account</a>
        </div>
 </header>

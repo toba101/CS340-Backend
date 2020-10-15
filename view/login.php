@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <title> PHP Login HomePage | Toba A. Obiwale|CSE 340</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link href="/phpmotors/css/small.css" rel="stylesheet" media="screen">
-  <link href="/phpmotors/css/large.css" rel="stylesheet" media="screen">
-
-</head>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/head.php'; ?>
 
 <body>
 
@@ -24,20 +16,32 @@
 
         
   <fieldset>
-    <form method="get" action="register.php">
+  <form method="get" action="/phpmotors/account/index.php">
   <h3>Sign in:</h3><br>
   Email: <br>
   <input type="email" name="mail" placeholder="weather@mail.com"><br>
   Password: <br>
   <input type="password" name="password" required><br>
-</fieldset> 
+  </form>
+  </fieldset> 
 
-<div class="butons">
+<div class="click">
 <button type="submit">Submit</button>
 </div>
+<br>
+<div class="register-button">
+  <a href='/phpmotors/accounts/index.php?action=registration'>Register</a>
+</div>
+
+<div class="test">
+  <p>Logo</p>
+</div>
+
 
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>
   </article>
-
 </main>
+
+</body>
+</html>
