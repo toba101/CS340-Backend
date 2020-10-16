@@ -30,12 +30,12 @@ if ($action == NULL) {
 }
 
 switch ($action) {
-    case 'login':
+    case 'vehicle-form':
 // case 'template':
     include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/login.php';
     break;
-    case 'registration':
-        include '../view/register.php';
+    case 'vehicle-reg':
+      
 
     break;
     default:

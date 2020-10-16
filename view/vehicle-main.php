@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Vehicle Man Page | Toba A. Obiwale|CSE 340</title>
+  <title>Vehicle Main Page | Toba A. Obiwale|CSE 340</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/phpmotors/css/small.css" type="text/css" rel="stylesheet" media="screen">
   <link href="/phpmotors/css/large.css" type="text/css" rel="stylesheet" media="screen">
@@ -25,9 +25,9 @@
   </nav>
 
  <div class="content">
- <h2> Vehicle Management </h2>
+ <h2> Add Vehicle </h2>
  <a href="/phpmotors/vehicles?action=add-classification" title="myAccount" target="_self">Add Classification</a><br>
- <a href="/phpmotors/vehicles?action=add-vehicle" title="myAccount" target="_self">Add Vehicle< /a>
+ <a href="/phpmotors/vehicles?action=add-vehicle" title="myAccount" target="_self">Add Vehicle</a>
 
   
   <footer>
