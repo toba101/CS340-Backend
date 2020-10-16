@@ -61,11 +61,10 @@ if($regOutcome === 1){
     $message = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
     include '../view/register.php';
     exit;
-   }
 
-case 'register':
-    echo'You are in the register case statement.';
-break;
+    case 'register':
+        echo'You are in the register case statement.';
+    break;
 
    
 switch ($action) {
@@ -73,13 +72,13 @@ switch ($action) {
 // case 'template':
     include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/login.php';
     break;
-    case 'registration':
+    case 'register':
         include '../view/register.php';
 
     break;
     default:
     include '../view/home.php';
     break;
+
 }
-   }
 ?>

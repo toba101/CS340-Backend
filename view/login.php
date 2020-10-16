@@ -25,7 +25,6 @@ echo $message;
   <input type="text" id="email" name="email"><br>
   <label for="password">Password</label><br>
   <input type="password" id="password" name="password"><br>
-
   <input type="submit" value="sign-in"> 
   <a href="/phpmotors/accounts/index.php/?action=register" id="toreg">Not a member yet?</a>
 </div>
