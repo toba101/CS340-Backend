@@ -14,29 +14,19 @@
   ?>
   </nav>
 
-        
-  <fieldset>
-  <form method="get" action="/phpmotors/account/index.php">
-  <h3>Sign in:</h3><br>
-  Email: <br>
-  <input type="email" name="mail" placeholder="weather@mail.com"><br>
-  Password: <br>
-  <input type="password" name="password" required><br>
-  </form>
-  </fieldset> 
-
-<div class="click">
-<button type="submit">Submit</button>
+<?php
+if (isset($message)) {
+echo $message;
+}
+?>
+<form method="get" action="/phpmotors/accounts/index.php" method="post">
+  <label for="email">Email</label><br>
+  <input type="text" id="email" name="email"><br>
+  <label for="password">Password</label><br>
+  <input type="password" id="password" name="password"><br>
+  <input type="submit" value="sign-in"> 
+  <a href="/phpmotors/accounts/index.php/?action=registration" id="toreg">Not a member yet?</a>
 </div>
-<br>
-<div class="register-button">
-  <a href='/phpmotors/accounts/index.php?action=registration'>Register</a>
-</div>
-
-<div class="test">
-  <p>Logo</p>
-</div>
-
 
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>

@@ -8,3 +8,4 @@ function getClassifications(){
  $stmt->closeCursor(); 
  return $classifications;
 }
+?>
