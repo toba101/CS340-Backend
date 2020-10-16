@@ -23,6 +23,7 @@ if (isset($message)) {
 ?>
 
  <form action="/phpmotors/accounts/index.php" method="post">
+ <fieldset>
  <label for="fname">First Name</label>
  <input type="text" id="fname" name="clientFirstname">
  <label for="lname">Last Name</label>
@@ -31,8 +32,11 @@ if (isset($message)) {
  <input type="text" id="email" name="clientEmail">      
  <label for="password">Password</label> 
  <input type="password" id="password" name="clientPassword"> 
+ <label>&nbsp;<label>
  <input type="submit" name="submit" id="regbtn" value="Register">
+ <!-- Add the action key - value pair -->
  <input type="hidden" name="action" value="register">
+ </fieldset>
  </form>
   
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';

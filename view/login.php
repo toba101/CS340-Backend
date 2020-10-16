@@ -20,12 +20,14 @@ echo $message;
 }
 ?>
 <form method="get" action="/phpmotors/accounts/index.php" method="post">
+<fieldset>
   <label for="email">Email</label><br>
   <input type="text" id="email" name="email"><br>
   <label for="password">Password</label><br>
   <input type="password" id="password" name="password"><br>
+
   <input type="submit" value="sign-in"> 
-  <a href="/phpmotors/accounts/index.php/?action=registration" id="toreg">Not a member yet?</a>
+  <a href="/phpmotors/accounts/index.php/?action=register" id="toreg">Not a member yet?</a>
 </div>
 
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
