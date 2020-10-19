@@ -24,11 +24,15 @@
    require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';?>
   </nav>
 
-  <h2>Add Car Classification</h2><br>
+
+  <h2> Add-Classification </h2><br>
   <h4> Classification Name </h4>
-<input type="text" id="spring" name="spring" value=""><br>
-<input type="submit" value="sign-in">
-<a href="/phpmotors/accounts/index.php/?action=vehicle-main"></a>
+  <form action="/phpmotors/vehicles/index.php" method ="post">
+  <input type="text" name="classificationName">
+  <input type="submit" value="submit">
+  <input type="hidden" name="action" value="add-classification">
+  </form>
+  
 
  
   

@@ -19,7 +19,7 @@ if (isset($message)) {
 echo $message;
 }
 ?>
-<form method="get" action="/phpmotors/accounts/index.php" method="post">
+<form action="/phpmotors/accounts/index.php" method="post">
 <fieldset>
   <label for="email">Email</label><br>
   <input type="text" id="email" name="email"><br>

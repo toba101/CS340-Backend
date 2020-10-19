@@ -58,6 +58,7 @@ $invPrice = filter_input(INPUT_POST, 'invPrice');
 $invStock = filter_input(INPUT_POST, 'invStock');
 $invColor = filter_input(INPUT_POST, 'invColor');
 $classificationId = filter_input(INPUT_POST, 'classificationId');
+$classificationName = filter_input(INPUT_POST, 'classificationName');
 // Check for missing data
 /*if(empty($classificationId) ||
 empty($invMake) ||
@@ -85,6 +86,9 @@ case 'add-vehicle':
 include '../view/add-vehicle.php';
 break;
 case 'add-classification':
+$classificationName = filter_input(INPUT_POST, 'classificationName');
+$insertClass = addClass($classificationName);
+print_r($classifications)
 include '../view/add-classification.php';
 break;
 

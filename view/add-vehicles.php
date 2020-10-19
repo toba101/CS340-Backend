@@ -24,7 +24,27 @@
    require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';
   ?>
   </nav>
+    
+  <?php
+  // Get the database connection file
+require_once '../library/connections.php';
+// Get the PHP Motors model for use as needed
+require_once '../model/main-model.php';
+// Get the accounts model
+require_once '../model/accounts-model.php';
 
+
+  $classifications = getClassifications();
+  $dropDown = '<select>';
+  foreach ($classifications as $each){
+   $dropDown .="<option value=$each[classificationId]>$each[classificationName]</option>";
+  }
+  echo $dropDown;
+  
+  ?>
+
+
+<!--
  <h2> Vehicle Management </h2>
  <label for="select">*Note all field are Required:</label><br>
  <select classificationid="Car" id="classificationName">
@@ -35,6 +55,8 @@
  <option value="truck">Truck</option>
  <option value="used">Used</option>
  </select> <br>
+ 
+
 
 <h4> Make </h4>
 <input type="text" id="spring" name="spring" value=""><br>
@@ -47,7 +69,7 @@
   rows="5" cols="33">
  Enter description here!
  </textarea> <br>
-
+ 
  <h4> Image Path </h4>
 <input type="text" id="spring" name="spring" value=""><br>
 
@@ -57,6 +79,7 @@
 <h4> Price </h4>
 <input type="text" id="spring" name="spring" value=""><br>
 <br>
+-->
 
 <hr>
 
