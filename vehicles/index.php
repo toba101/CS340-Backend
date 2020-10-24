@@ -37,13 +37,13 @@ $classificationName = filter_input(INPUT_POST, 'classificationName');
 // Check for missing data
 if(empty($classificationName)){
 $message = '<p>Please provide Classification Name.</p>';
-include '../view/add-vehicle.php';
+include '../view/add-vehicles.php';
 exit;
 }
 
 //send the data to the model if no errors exist
-$insClass = insertClassification($classificationName);
-include '../view/vehicle-man.php';
+$insertClassifications = insertClassification($classificationName);
+include '../view/vehicles-man.php';
 break;
 
 case 'insertVehicle':
@@ -73,7 +73,8 @@ empty($invColor)
 $message = '<p>Please provide all Vehicle information.</p>';
 include '../view/add-vehicle.php';
 exit;
-}*/
+}
+*/
 
 //send the data to the model if no errors exist
 $insertVehicle = insertVehicle($invMake, $invModel, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invColor, $classificationId);
@@ -83,15 +84,16 @@ exit;
 break;
 case 'add-vehicle':
 
-include '../view/add-vehicle.php';
+include '../view/add-vehicleS.php';
 break;
 case 'add-classification':
 $classificationName = filter_input(INPUT_POST, 'classificationName');
 $insertClass = addClass($classificationName);
-print_r($classifications)
+print_r($classifications);
 include '../view/add-classification.php';
 break;
 
 default:
 include '../view/vehicle-man.php';
 }
+?>

@@ -16,7 +16,7 @@ function addClass($classificationName){
  $stmt->bindValue(':classificationName', $classificationName, PDO::PARAM_STR);
  
  // Insert the data
- $stmt->execute();
+ $stmt->execute(':classificationName', $classificationName, PDO::PARAM_STR);
 
  // Ask how many rows changed as a result of our insert
  $rowsChanged = $stmt->rowCount();
