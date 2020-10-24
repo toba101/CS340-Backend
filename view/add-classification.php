@@ -45,10 +45,7 @@
 ?>
    
 </article>
-
-   </main>
-
-  
+</main>
 
 <script>
 function myFunction() {

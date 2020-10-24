@@ -1,7 +1,4 @@
 <?php
-/*
- *
- */
 
  // Validate email address
 function checkEmail($clientEmail){

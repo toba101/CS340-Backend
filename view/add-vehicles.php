@@ -118,10 +118,7 @@ if($message){
    
 
 </article>
-
-   </main>
-
-  
+</main>
 
 <script>
 function myFunction() {

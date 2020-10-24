@@ -30,19 +30,17 @@ if(isset($clientEmail)){echo "value='$clientEmail'";
  <label for="clientPassword">Password:</label>  
 <input type="password" name="clientPassword" id="clientPassword" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
 <span>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</span>
-<label>&nbsp;<label>
+<label>&nbsp;</label>
 <input type="submit" value="sign-in">
 <input type="hidden" name="action" value="Login">
  
   <a href="/phpmotors/accounts/index.php/?action=register-page" id="toreg">Not a member yet?</a>
-</div>
-
 
 <hr>
 
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>
-  </article>
+</article>
 </main>
 
 </body>
