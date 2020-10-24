@@ -244,6 +244,7 @@ footer {
 
     /* Register */
 
+    
     main.form {
       clear: both;
       text-align: left;
@@ -252,8 +253,18 @@ footer {
       margin: auto;
       border: 3px solid rgb(200, 226, 241);
       margin-top: 20px;
-      
       }
+
+      input:required:invalid, input:focus:invalid {
+        background-image: url(/images/invalid.png);
+        background-position: right top;
+        background-repeat: no-repeat;
+       }
+        input:required:valid {
+        background-image: url(/images/valid.png);
+        background-position: right top;
+        background-repeat: no-repeat;
+        }
         
       fieldset {
       max-width: 500px;
