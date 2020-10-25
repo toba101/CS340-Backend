@@ -43,7 +43,8 @@ exit;
 
 //send the data to the model if no errors exist
 $insertClass = insertClassification($classificationName);
-include '../view/vehicle-man.php';
+header('Location: ../vehicles/index.php');
+// include '../view/vehicle-man.php';
 break;
 
 case 'insertVehicle':
@@ -88,8 +89,8 @@ include '../view/add-vehicles.php';
 break;
 case 'add-classification':
 $classificationName = filter_input(INPUT_POST, 'classificationName');
-$insertClass = addClass($classificationName);
-print_r($classifications);
+// $insertClass = addClass($classificationName);
+// print_r($classifications);
 include '../view/add-classification.php';
 break;
 

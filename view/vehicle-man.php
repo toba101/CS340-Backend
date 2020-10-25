@@ -20,8 +20,11 @@
 </header> 
 
   <nav>
+  <div class="topnav" id="myTopnav">
   <?php
-   require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';?>
+   echo $navList;
+   ?>  
+   </div>
   </nav>
 
  <div class="content">
