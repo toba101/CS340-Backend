@@ -30,7 +30,7 @@ if (isset($message)) {
  
 
 <label for="clientLastname">Last Name</label>
- <input type="text" name="clientLastname" id="clientLastname"> <?php
+ <input type="text" name="clientLastname" id="clientLastname" <?php
  if (isset($clientLastname)) {
    echo "value='$clientLastname'";
 }

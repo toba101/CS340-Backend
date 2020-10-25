@@ -34,7 +34,7 @@
 </td></tr>
 
 <tr><td colspan="2">
-<input type="submit" name="submit" id="regbtn" value="Add Classification">
+<input type="submit" name="submit" id="regbtn" value="Add Classification"> 
 <!-- Add the action name - value pair -->
 <input type="hidden" name="action" value="insertClassification">
 </td></tr>
