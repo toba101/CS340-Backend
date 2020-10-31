@@ -25,22 +25,22 @@ if (isset($message)) {
 <fieldset>
  <label for="clientFirstname">First Name</label>
  <input name="clientFirstname" id="clientFirstname" <?php 
- if(isset($clientFirstname)){echo "value='$clientFirstname'";}
-  ?> required>
+ if(isset($clientFirstname)){echo "value='$clientFirstname'";
+} ?> required>
  
 
 <label for="clientLastname">Last Name</label>
  <input type="text" name="clientLastname" id="clientLastname" <?php
  if (isset($clientLastname)) {
    echo "value='$clientLastname'";
-}
-?> required>
+} ?> required>
+
 <label for="clientEmail">Email Address</label>
 <input name="clientEmail" id="clientEmail" <?php 
 if(isset($clientEmail)){echo "value='$clientEmail'";
-} 
-?> required>
-<label for="Clientassword">Password</label>
+} ?> required>
+
+<label for="Clientpassword">Password</label>
 <input type="password" name="clientPassword" id="clientPassword" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
  <span>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</span>
  <label>&nbsp;</label>
@@ -50,7 +50,7 @@ if(isset($clientEmail)){echo "value='$clientEmail'";
  </fieldset>
  </form>
 
-
+<hr>
   
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>

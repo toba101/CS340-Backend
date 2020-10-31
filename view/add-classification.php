@@ -30,8 +30,16 @@
 <tr><td>
 <label id="classificationName">Classification Name<abbr class="req">*</abbr></label>
 </td><td>
+<input type="text" id="classificationName" name="classificationName" required
+<?php
+if(isset($classificationName)){
+echo "value='$classificationName'";
+}
+?> 
 <input type="text" id="cName" name="classificationName">
 </td></tr>
+
+
 
 <tr><td colspan="2">
 <input type="submit" name="submit" id="regbtn" value="Add Classification"> 
@@ -40,9 +48,12 @@
 </td></tr>
 </table>
 </form>
+
+
  
   <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>
+
    
 </article>
 </main>

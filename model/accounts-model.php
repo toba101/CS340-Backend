@@ -1,5 +1,22 @@
 <?php
 function regClient($clientFirstname, $clientLastname, $clientEmail, $clientPassword){
+
+// Check for an existing email address
+function checkExistingEmail($clientEmail) {
+    $db =  phpmotorsConnect();
+    $sql = 'SELECT clientEmail FROM clients WHERE clientEmail = :email';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':email', $clientEmail, PDO::PARAM_STR);
+    $stmt->execute();
+    $matchEmail = $stmt->fetch(PDO::FETCH_NUM);
+    $stmt->closeCursor();
+    if(empty($matchEmail)){
+        return 0;
+        } else {
+        return 1;
+ }
+}
+
  // Create a connection object using the phpmotors connection function
  $db = phpmotorsConnect();
  // The SQL statement
@@ -24,4 +41,4 @@ function regClient($clientFirstname, $clientLastname, $clientEmail, $clientPassw
  return $rowsChanged;
 }
 
-?>
+ ?>

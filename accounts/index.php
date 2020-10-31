@@ -46,8 +46,19 @@ switch ($action) {
             $clientLastname = filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING);
             $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_STRING);
             $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
+            
             $clientEmail = checkEmail($clientEmail);
             $checkPassword = checkPassword($clientPassword);
+            
+            // check for existing email
+            $existingEmail = checkExistingEmail($clientEmail);
+
+            // Deal with existing email during the registration
+            if($existingEmail){
+            $message = '<p class="notice">That email address already exists. Do you want to login instead?</p>';
+            include '../view/login.php';
+            exit;
+            }
 
             // Check for missing data
             if(empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($checkPassword)){
@@ -74,11 +85,13 @@ switch ($action) {
             exit;
             }
 
-        break;
-
-        case 'Login':
-          
-        break;
+        // Check and report the result
+            if ($regOutcome === 1) {
+            setcookie('firstname', $clientFirstname, strtotime('+1 year'), '/');
+            $message = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
+             include '../view/login.php';
+             exit;
+ } 
 
         
     // break;
