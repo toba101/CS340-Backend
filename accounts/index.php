@@ -1,5 +1,8 @@
 <?php
 
+// Create or access a Session
+session_start();
+
 // Get the database connection file
 require_once '../library/connections.php';
 // Get the PHP Motors model for use as needed
@@ -8,6 +11,8 @@ require_once '../model/main-model.php';
 require_once '../model/accounts-model.php';
 // Get the functions library
 require_once '../library/functions.php';
+
+
 
 // Get the array of classifications
 $classifications = getClassifications();
@@ -23,6 +28,11 @@ foreach ($classifications as $classification) {
     . "' title=view our $classification[classificationName] product line'<$classification[classificationName]</a></li>";
 }
 $navList .= '</ul>';
+
+// Check if the firstname cookie exists, get its value
+if(isset($_COOKIE['firstname'])){
+    $cookieFirstname = filter_input(INPUT_COOKIE, 'firstname', FILTER_SANITIZE_STRING);
+   }
 
 // Get the value from the action name - value pair
 $action = filter_input(INPUT_GET, 'action');
@@ -74,7 +84,8 @@ switch ($action) {
             $hashedPassword);
 
             // Check and report the result
-            if($regOutcome === 1){
+            if($regOutcome === 1) {
+                setcookie('firstname', $clientFirstname, strtotime('+1 year'), '/');
 
             $message = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
             include '../view/login.php';
@@ -84,14 +95,6 @@ switch ($action) {
             include '../view/register.php';
             exit;
             }
-
-        // Check and report the result
-            if ($regOutcome === 1) {
-            setcookie('firstname', $clientFirstname, strtotime('+1 year'), '/');
-            $message = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
-             include '../view/login.php';
-             exit;
- } 
 
         
     // break;

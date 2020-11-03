@@ -42,4 +42,16 @@ function checkExistingEmail($clientEmail) {
         return 1;
  }
 }
+
+// Get client data based on an email address
+function getClient($clientEmail){
+    $db = phpmotorsConnect();
+    $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword FROM clients WHERE clientEmail = :clientEmail';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
+    $stmt->execute();
+    $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $clientData;
+   }
  ?>
