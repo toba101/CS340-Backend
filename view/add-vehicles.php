@@ -58,49 +58,49 @@ if($message){
 <tr><td>
 <label for="invMake">Make<abbr class="req">*</abbr></label>
 </td><td>
-<input type="text" id="invMake" name="invMake">
+<input type="text" id="invMake" name="invMake" required>
 </td></tr>
 
 <tr><td>
 <label for="invModel">Model<abbr class="req">*</abbr></label>
 </td><td>
-<input type="text" id="invModel" name="invModel">
+<input type="text" id="invModel" name="invModel" required>
 </td></tr>
 
 <tr><td>
 <label for="invDescription">Description<abbr class="req">*</abbr></label>
 </td><td>
-<input type="text" id="invDescription" name="invDescription">
+<input type="text" id="invDescription" name="invDescription" required>
 </td></tr>
 
 <tr><td>
 <label for="invImage">Image<abbr class="req">*</abbr></label>
 </td><td>
-<input type="text" id="invImage" name="invImage" value="/phpmotors/images/no-image.png">
+<input type="text" id="invImage" name="invImage" value="/phpmotors/images/no-image.png" required>
 </td></tr>
 
 <tr><td>
 <label for="invThumbnail">Thumbnail<abbr class="req">*</abbr></label>
 </td><td>
-<input type="text" id="invThumbnail" name="invThumbnail" value="/phpmotors/images/no-image 2.png">
+<input type="text" id="invThumbnail" name="invThumbnail" value="/phpmotors/images/no-image 2.png" required>
 </td></tr>
 
 <tr><td>
 <label for="invPrice">Price<abbr class="req">*</abbr></label>
 </td><td>
-<input type="text" id="invPrice" name="invPrice">
+<input type="text" id="invPrice" name="invPrice" required>
 </td></tr>
 
 <tr><td>
 <label for="invStock">Stock<abbr class="req">*</abbr></label>
 </td><td>
-<input type="text" id="invStock" name="invStock">
+<input type="text" id="invStock" name="invStock" required>
 </td></tr>
 
 <tr><td>
 <label for="invColor">Color<abbr class="req">*</abbr></label>
 </td><td>
-<input type="text" id="invColor" name="invColor">
+<input type="text" id="invColor" name="invColor" required>
 </td></tr>
 
 
