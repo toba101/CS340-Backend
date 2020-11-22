@@ -35,12 +35,28 @@ require_once '../model/vehicles-model.php';
 // Get the array of classifications
 #$classifications = getClassifications();
 
+// $classificationDropDown = '<select id="classification" name="classificationId">';
+// $classificationDropDown .= '<option>Choose a car classification</option>';
+// foreach ($classificationList as $classification) {
+// $classificationDropDown .= "<option value='".$classification['classificationId']."'>".$classification['classificationName']."</option>";
+// }
+// $classificationDropDown .= '</select>';
+
+
 $classificationDropDown = '<select id="classification" name="classificationId">';
 $classificationDropDown .= '<option>Choose a car classification</option>';
 foreach ($classificationList as $classification) {
-$classificationDropDown .= "<option value='".$classification['classificationId']."'>".$classification['classificationName']."</option>";
+  $classificationDropDown .= "<option value='$classification[classificationId]'";
+    if(isset($classificationId)){
+      if($classification['classificationId'] === $classificationId) {
+        $classificationDropDown .= 'selected';
+      }
+    }
+  $classificationDropDown .= ">$classification[classificationName]</option>";
 }
 $classificationDropDown .= '</select>';
+
+
 
 if($message){
     echo "<h6 color='red'>".$message."</h6>";
@@ -58,19 +74,20 @@ if($message){
 <tr><td>
 <label for="invMake">Make<abbr class="req">*</abbr></label>
 </td><td>
-<input type="text" id="invMake" name="invMake" required>
+<input type="text" id="invMake" name="invMake" <?php if(isset($invMake)){echo "value='$invMake'";} ?> required>
 </td></tr>
 
 <tr><td>
 <label for="invModel">Model<abbr class="req">*</abbr></label>
 </td><td>
-<input type="text" id="invModel" name="invModel" required>
+<input type="text" id="invModel" name="invModel" <?php if(isset($invModel)){echo "value='$invModel'";} ?>required> 
 </td></tr>
 
 <tr><td>
-<label for="invDescription">Description<abbr class="req">*</abbr></label>
+<label for="invDescription">Description<abbr class="req"></abbr></label>
 </td><td>
-<input type="text" id="invDescription" name="invDescription" required>
+<!-- <input type="text" id="invDescription" name="invDescription" required> -->
+<textarea id="invDescription" name="invDescription" required><?php if(isset($invDescription)){echo $invDescription;} ?></textarea>
 </td></tr>
 
 <tr><td>
@@ -88,13 +105,13 @@ if($message){
 <tr><td>
 <label for="invPrice">Price<abbr class="req">*</abbr></label>
 </td><td>
-<input type="text" id="invPrice" name="invPrice" required>
+<input type="number" id="invPrice" name="invPrice" required>
 </td></tr>
 
 <tr><td>
 <label for="invStock">Stock<abbr class="req">*</abbr></label>
 </td><td>
-<input type="text" id="invStock" name="invStock" required>
+<input type="number" id="invStock" name="invStock" required>
 </td></tr>
 
 <tr><td>

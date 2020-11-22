@@ -50,18 +50,18 @@ break;
 case 'insertVehicle':
 
 // Filter and store the data
-$invMake = filter_input(INPUT_POST, 'invMake');
-$invModel = filter_input(INPUT_POST, 'invModel');
-$invDescription = filter_input(INPUT_POST, 'invDescription');
-$invImage = filter_input(INPUT_POST, 'invImage');
-$invThumbnail = filter_input(INPUT_POST, 'invThumbnail');
-$invPrice = filter_input(INPUT_POST, 'invPrice');
-$invStock = filter_input(INPUT_POST, 'invStock');
-$invColor = filter_input(INPUT_POST, 'invColor');
-$classificationId = filter_input(INPUT_POST, 'classificationId');
-$classificationName = filter_input(INPUT_POST, 'classificationName');
+$invMake = filter_input(INPUT_POST, 'invMake', FILTER_SANITIZE_STRING);
+$invModel = filter_input(INPUT_POST, 'invModel', FILTER_SANITIZE_STRING);
+$invDescription = filter_input(INPUT_POST, 'invDescription', FILTER_SANITIZE_STRING);
+$invImage = filter_input(INPUT_POST, 'invImage', FILTER_SANITIZE_STRING);
+$invThumbnail = filter_input(INPUT_POST, 'invThumbnail', FILTER_SANITIZE_STRING);
+$invPrice = filter_input(INPUT_POST, 'invPrice', FILTER_SANITIZE_NUMBER_INT);
+$invStock = filter_input(INPUT_POST, 'invStock', FILTER_SANITIZE_NUMBER_INT);
+$invColor = filter_input(INPUT_POST, 'invColor', FILTER_SANITIZE_STRING);
+$classificationId = filter_input(INPUT_POST, 'classificationId', FILTER_SANITIZE_NUMBER_INT);
+// $classificationName = filter_input(INPUT_POST, 'classificationName');
 // Check for missing data
-/*if(empty($classificationId) ||
+if(empty($classificationId) ||
 empty($invMake) ||
 empty($invModel) ||
 empty($invDescription) ||
@@ -75,7 +75,7 @@ $message = '<p>Please provide all Vehicle information.</p>';
 include '../view/add-vehicles.php';
 exit;
 }
-*/
+
 
 //send the data to the model if no errors exist
 $insertVehicle = insertVehicle($invMake, $invModel, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invColor, $classificationId);
