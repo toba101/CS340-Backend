@@ -116,11 +116,11 @@ switch ($action) {
             $existingEmail = checkExistingEmail($clientEmail);
 
             // Deal with existing email during the registration
-            if($existingEmail){
-            $message = '<p class="notice">That email address already exists. Do you want to login instead?</p>';
-            include '../view/login.php';
-            exit;
-            }
+if($existingEmail && $clientEmail != $_SESSION['clientData']['clientEmail'){
+$message = '<p class="notice">That email address already exists. Do you want to login instead?</p>';
+include '../view/login.php';
+exit;
+}
 
             // Check for missing data
             if(empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($checkPassword)){
