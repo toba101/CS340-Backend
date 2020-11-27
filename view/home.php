@@ -26,8 +26,8 @@
      <button type="submit">OWN TODAY</button>
    </div>
 
-   <div class="delorean">
-     <img src="/phpmotors/images/site/delorean.jpg" alt="Delorean Car">
+   <div class="camaro">
+     <img src="/phpmotors/images/vehicles/camaro.jpg" alt="Camaro Car">
    </div> 
 
    <div class="row-container">
@@ -76,7 +76,7 @@
 </div><!--close column container-->
 </div><!--close row container-->
   
-
+<hr>
 
  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>

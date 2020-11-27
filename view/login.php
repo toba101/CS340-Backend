@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/head.php'; ?>
+<head>
+  <meta charset="utf-8">
+  <title>PHP Login Page | Toba A. Obiwale|CSE 340</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/phpmotors/css/small.css" type="text/css" rel="stylesheet" media="screen">
+  <link href="/phpmotors/css/large.css" type="text/css" rel="stylesheet" media="screen">
+</head>
 
 <body>
 
@@ -37,12 +43,16 @@ echo $message;
  </form>
   <a href="/phpmotors/accounts/index.php/?action=register-page" id="toreg">Not a member yet?</a>
 
+
 <hr>
 
-<?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
-?>
 </article>
 </main>
+
+<footer> 
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
+?>
+</footer>
 
 </body>
 </html>

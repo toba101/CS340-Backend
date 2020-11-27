@@ -1,11 +1,34 @@
+<?php
+if ($_SESSION['clientData']['clientLevel'] < 2) {
+ header('location: /phpmotors/');
+ exit;
+}
+?>
+<?php
+// Get the array of classifications
+$classifications = getClassifications();
+
+$classificationDropDown = '<select id="classification" name="classificationId">';
+$classificationDropDown .= '<option>Choose a car classification</option>';
+foreach ($classificationList as $classification) {
+ $classificationDropDown .= "<option value='$classification[classificationId]'";
 
 
-<!DOCTYPE html>
+ if (isset($classificationId)){
+  if($classification['classificationId'] === $classificationId){
+    $classificationDropDown .= ' selected ';
+  }
+ }
+ $classificationDropDown .=">$classification[classificationName]</option>";
+}
+$classificationDropDown .= '</select>';
+
+?><!DOCTYPE html>
 <html lang="en-us">
 
 <head>
   <meta charset="utf-8">
-  <title>Add Vehicle Page | Toba A. Obiwale|CSE 340</title>
+  <title>Add Vehicle Page |CSE 340</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/phpmotors/css/small.css" type="text/css" rel="stylesheet" media="screen">
   <link href="/phpmotors/css/large.css" type="text/css" rel="stylesheet" media="screen">
@@ -13,9 +36,9 @@
 </head>
 
 <body>
-<main>
-<article>
 
+<main>
+  <article>
 <header>
        <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php';
 ?>  
@@ -25,8 +48,11 @@
   <?php
    require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';?>
   </nav>
+  
+  <main>
+  <article>
 
-<h1>Add Vehicle</h1>
+  <h1>Add Vehicle</h1>
 <?php
 require_once '../library/connections.php';
 // Get the PHP Motors model for use as needed
@@ -105,19 +131,37 @@ if($message){
 <tr><td>
 <label for="invPrice">Price<abbr class="req">*</abbr></label>
 </td><td>
-<input type="number" id="invPrice" name="invPrice" required>
+<input type="number" id="invPrice" name="invPrice"
+<?php
+if(isset($invPrice)){
+echo "value='$invPrice'";
+}
+?>
+required>
 </td></tr>
 
 <tr><td>
 <label for="invStock">Stock<abbr class="req">*</abbr></label>
 </td><td>
-<input type="number" id="invStock" name="invStock" required>
+<input type="number" id="invStock" name="invStock"
+<?php
+if(isset($invStock)){
+echo "value='$invStock'";
+}
+?>
+required>
 </td></tr>
 
 <tr><td>
 <label for="invColor">Color<abbr class="req">*</abbr></label>
 </td><td>
-<input type="text" id="invColor" name="invColor" required>
+<input type="text" id="invColor" name="invColor" 
+<?php
+if(isset($invColor)){
+echo "value='$invColor'";
+}
+?>
+required>
 </td></tr>
 
 
@@ -133,7 +177,6 @@ if($message){
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>
    
-
 </article>
 </main>
 

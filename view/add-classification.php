@@ -1,13 +1,19 @@
+<?php
+if ($_SESSION['clientData']['clientLevel'] < 2) {
+ header('location: /phpmotors/');
+ exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en-us">
 
 <head>
   <meta charset="utf-8">
-  <title>add-Classification Page | Toba A. Obiwale|CSE 340</title>
+  <title>PHP Add-Classification Page | Toba A. Obiwale|CSE 340</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/phpmotors/css/small.css" type="text/css" rel="stylesheet" media="screen">
   <link href="/phpmotors/css/large.css" type="text/css" rel="stylesheet" media="screen">
-
 </head>
 
 <body>
@@ -36,10 +42,8 @@ if(isset($classificationName)){
 echo "value='$classificationName'";
 }
 ?> 
-<input type="text" id="cName" name="classificationName">
+>
 </td></tr>
-
-
 
 <tr><td colspan="2">
 <input type="submit" name="submit" id="regbtn" value="Add Classification"> 
@@ -50,13 +54,14 @@ echo "value='$classificationName'";
 </form>
 
 
- 
-  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
-?>
 
-   
 </article>
 </main>
+
+<footer>
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
+?>
+</footer>
 
 <script>
 function myFunction() {
