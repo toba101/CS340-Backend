@@ -142,7 +142,7 @@ $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
 $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);    
 
 // Send the data to the model
-$regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail, $hashedPassword);
+$regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail, $hashedPassword)
 // $regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail, 
 //             $regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail, 
 // $regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail, 
