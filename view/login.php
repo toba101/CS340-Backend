@@ -20,10 +20,13 @@
   ?>
   </nav>
 
-<?php
-if (isset($message)) {
-echo $message;
-}
+  <h1>Sign in</h1>
+  <?php
+//if (isset($message)) {
+ //echo $message;
+ if (isset($_SESSION['message'])) {
+  echo $_SESSION['message'];
+ }
 ?>
 <form action="/phpmotors/accounts/index.php" method="post">
   <fieldset>
@@ -46,13 +49,14 @@ echo $message;
 
 <hr>
 
-</article>
-</main>
 
 <footer> 
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>
 </footer>
+
+</article>
+</main>
 
 </body>
 </html>

@@ -32,63 +32,22 @@ $classificationDropDown .= '</select>';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/phpmotors/css/small.css" type="text/css" rel="stylesheet" media="screen">
   <link href="/phpmotors/css/large.css" type="text/css" rel="stylesheet" media="screen">
-
 </head>
 
 <body>
-
 <main>
-  <article>
+<article>
+
 <header>
-       <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php';
-?>  
+  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>  
 </header> 
 
-  <nav>
-  <?php
-   require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';?>
-  </nav>
-  
-  <main>
-  <article>
-
-  <h1>Add Vehicle</h1>
+<nav>
 <?php
-require_once '../library/connections.php';
-// Get the PHP Motors model for use as needed
-require_once '../model/vehicles-model.php';
-
-// Get the array of classifications
-#$classifications = getClassifications();
-
-// $classificationDropDown = '<select id="classification" name="classificationId">';
-// $classificationDropDown .= '<option>Choose a car classification</option>';
-// foreach ($classificationList as $classification) {
-// $classificationDropDown .= "<option value='".$classification['classificationId']."'>".$classification['classificationName']."</option>";
-// }
-// $classificationDropDown .= '</select>';
-
-
-$classificationDropDown = '<select id="classification" name="classificationId">';
-$classificationDropDown .= '<option>Choose a car classification</option>';
-foreach ($classificationList as $classification) {
-  $classificationDropDown .= "<option value='$classification[classificationId]'";
-    if(isset($classificationId)){
-      if($classification['classificationId'] === $classificationId) {
-        $classificationDropDown .= 'selected';
-      }
-    }
-  $classificationDropDown .= ">$classification[classificationName]</option>";
-}
-$classificationDropDown .= '</select>';
-
-
-
-if($message){
-    echo "<h6 color='red'>".$message."</h6>";
-    }
-    ?>
-
+require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';?>
+</nav>
+  
+  <h1> Add Vehicle </h1>
 <form class="add" action="/phpmotors/vehicles/index.php" method="post">
 <table class="regForm">
 <tr><td>
@@ -164,8 +123,6 @@ echo "value='$invColor'";
 required>
 </td></tr>
 
-
-
 <tr><td colspan="2">
 <input type="submit" name="submit" id="regbtn" value="Add Vehicle">
 <!-- Add the action name - value pair -->
@@ -173,6 +130,9 @@ required>
 </td></tr>
 </table>
 </form>
+
+
+<hr>
 
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>
@@ -188,8 +148,7 @@ function myFunction() {
   } else {
     x.className = "topnav";
   }
-}
-</script>
+}</script>
 
 </body>
 </html>

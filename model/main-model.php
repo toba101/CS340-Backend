@@ -1,4 +1,9 @@
 <?php
+
+/*
+* Main PHPMotors Model
+*/
+   
 function getClassifications(){
  $db = phpmotorsConnect(); 
  $sql = 'SELECT classificationName, classificationId FROM carclassification ORDER BY classificationName ASC'; 
@@ -7,5 +12,4 @@ function getClassifications(){
  $classifications = $stmt->fetchAll(); 
  $stmt->closeCursor(); 
  return $classifications;
-}
-?>
+} 

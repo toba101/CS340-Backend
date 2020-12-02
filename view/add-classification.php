@@ -4,7 +4,6 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
  exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en-us">
 
@@ -21,8 +20,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
 <article>
 
 <header>
-       <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php';
-?>  
+  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>  
 </header> 
 
   <nav>
@@ -30,19 +28,25 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
    require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';?>
   </nav>
 
+  <?php
+    if($message){
+echo "<h6 color='red'>".$message."</h6>";
+}
+?>
+
   <h1>Add Car Classification</h1>
 <form class="add" action="/phpmotors/vehicles/index.php" method="post">
 <table class="regForm">
 <tr><td>
 <label id="classificationName">Classification Name<abbr class="req">*</abbr></label>
 </td><td>
-<input type="text" id="classificationName" name="classificationName" required
+<input type="text" id="classificationName" name="classificationName" required>
+
 <?php
 if(isset($classificationName)){
 echo "value='$classificationName'";
 }
 ?> 
->
 </td></tr>
 
 <tr><td colspan="2">
@@ -53,15 +57,15 @@ echo "value='$classificationName'";
 </table>
 </form>
 
-
-
-</article>
-</main>
+<hr>
 
 <footer>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>
 </footer>
+
+</article>
+</main>
 
 <script>
 function myFunction() {

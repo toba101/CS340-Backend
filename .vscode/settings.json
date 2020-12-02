@@ -1,0 +1,9 @@
+{
+    "prettier.requireConfig": true,
+    "prettier.useTabs": true,
+    "rest-client.excludeHostsForProxy": [
+    
+    ],
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+}

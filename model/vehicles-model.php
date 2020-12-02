@@ -102,7 +102,7 @@ function getInvItemInfo($invId){
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':classificationId', $classificationId, PDO::PARAM_INT);
         $stmt->bindValue(':invMake', $invMake, PDO::PARAM_STR);
-         $stmt->bindValue(':invModel', $invModel, PDO::PARAM_STR);
+        $stmt->bindValue(':invModel', $invModel, PDO::PARAM_STR);
         $stmt->bindValue(':invDescription', $invDescription, PDO::PARAM_STR);
         $stmt->bindValue(':invImage', $invImage, PDO::PARAM_STR);
         $stmt->bindValue(':invThumbnail', $invThumbnail, PDO::PARAM_STR);
@@ -128,7 +128,7 @@ function getInvItemInfo($invId){
         return $rowsChanged;
        }
 
-//10get a list of vehicles based on the classification
+//get a list of vehicles based on the classification
 function getVehiclesByClassification($classificationName){
  $db = phpmotorsConnect();
  $sql = "SELECT * FROM inventory  INNER JOIN images ON inventory.invId=images.invId WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName) and imgPrimary=1 and imgPath NOT LIKE '%-tn%'";

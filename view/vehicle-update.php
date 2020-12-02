@@ -8,24 +8,23 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
 // Get the array of classifications
 $classifications = getClassifications();
 
-$classificationDropDown = '<select id="classification" name="classificationId">';
-$classificationDropDown .= '<option>Choose a car classification</option>';
-foreach ($classificationList as $classification) {
- $classificationDropDown .= "<option value='$classification[classificationId]'";
-
-
- if (isset($classificationId)){
+// Build the classifications option list
+$classifList = '<select name="classificationId" id="classificationId">';
+$classifList .= "<option>Choose a Car Classification</option>";
+foreach ($carClassifications as $classification) {
+ $classifList .= "<option value='$classification[classificationId]'";
+ if(isset($classificationId)){
   if($classification['classificationId'] === $classificationId){
-    $classificationDropDown .= ' selected ';
+   $classifList .= ' selected ';
   }
-} elseif(isset($invInfo['classificationId'])){
-    if($classification['classificationId'] === $invInfo['classificationId']){
-     $classificationDropDown .= ' selected ';
-    }
+ } elseif(isset($invInfo['classificationId'])){
+ if($classification['classificationId'] === $invInfo['classificationId']){
+  $classifList .= ' selected ';
  }
- $classificationDropDown .=">$classification[classificationName]</option>";
 }
-$classificationDropDown .= '</select>';
+$classifList .= ">$classification[classificationName]</option>";
+}
+$classifList .= '</select>';
 
 ?><!DOCTYPE html>
 <html lang="en-us">
@@ -75,35 +74,26 @@ echo "<h6 color='red'>".$message."</h6>";
  <tr><td>
     <label for="invMake">Make<abbr class="req">*</abbr></label>
     </td><td>
-    <input type="text" id="invMake" name="invMake" 
-    <?php
-    if(isset($invMake)){ 
-        echo "value='$invMake'"; } 
-        elseif(isset($invInfo['invMake'])) {
-            echo "value='$invInfo[invMake]'"; 
-    }
-    ?> required>
+    <input type="text" name="invMake" id="invMake" required 
+    <?php if(isset($invMake)){ echo "value='$invMake'"; } 
+    elseif(isset($invInfo['invMake'])) {echo "value='$invInfo[invMake]'"; }?>>
+    
     </td></tr>
 
     <tr><td>
     <label for="invModel">Model<abbr class="req">*</abbr></label>
     </td><td>
-    <input type="text" id="invModel" name="invModel" 
-    <?php 
-    if(isset($invModel)){ 
-        echo "value='$invModel'"; } 
-        elseif(isset($invInfo['invModel'])) {
-            echo "value='$invInfo[invModel]'";
-    }   
-    ?> required>
+    <input type="text" name="invModel" id="invModel" required 
+    <?php if(isset($invModel)){ echo "value='$invModel'"; } 
+    elseif(isset($invInfo['invModel'])) {echo "value='$invInfo[invModel]'"; }?>>
     </td></tr>
 
     <tr><td>
     <label for="invDescription">Description<abbr class="req">*</abbr></label>
     </td><td>
     <textarea name="invDescription" id="invDescription" required>
-<?php if(isset($invDescription)){ echo $invDescription; } elseif(isset($invInfo['invDescription'])) {echo $invInfo['invDescription']; }
-?></textarea>
+    <?php if(isset($invDescription)){ echo $invDescription; }
+    elseif(isset($invInfo['invDescription'])) {echo $invInfo['invDescription']; }?></textarea>
     </td></tr>
 
     <tr><td>
@@ -116,81 +106,64 @@ echo "<h6 color='red'>".$message."</h6>";
         elseif(isset($invInfo['invImage'])) {
             echo "value='$invInfo[invImage]'"; 
     }
-    ?> required>
+    ?>>
     </td></tr>
 
     <tr><td>
     <label for="invThumbnail">Thumbnail<abbr class="req">*</abbr></label>
     </td><td>
-    <input type="text" id="invThumbnail" name="invThumbnail" value="/phpmotors/images/no-image 2.png" 
+    <input type="text" id="invThumbnail" name="invThumbnail" value="/phpmotors/images/no-image 2.png">
     <?php
     if(isset($invThumbnail)){ 
         echo "value='$invThumbnail'"; } 
         elseif(isset($invInfo['invThumbnail'])) {
             echo "value='$invInfo[invThumbnail]'"; 
     }
-    ?> required>
+    ?>
     </td></tr>
 
     <tr><td>
     <label for="invPrice">Price<abbr class="req">*</abbr></label>
     </td><td>
-    <input type="text" id="invPrice" name="invPrice" 
-    <?php
-    if(isset($invPrice)){ 
-        echo "value='$invPrice'"; } 
-        elseif(isset($invInfo['invPrice'])) {
-            echo "value='$invInfo[invPrice]'"; 
-    }
-    ?> required>
+    <input type="text" name="invMake" id="invMake" required 
+    <?php if(isset($invPrice)){ echo "value='$invPrice'"; } 
+    elseif(isset($invInfo['invPrice'])) {echo "value='$invInfo[invPrice]'"; }?>>
     </td></tr>
 
     <tr><td>
     <label for="invStock">Stock<abbr class="req">*</abbr></label>
     </td><td>
-    <input type="text" id="invStock" name="invStock" 
-    <?php
-    if(isset($invStock)){ 
-        echo "value='$invStock'"; } 
-        elseif(isset($invInfo['invStock'])) {
-            echo "value='$invInfo[invStock]'"; 
-    }
-    ?> required>
+    <input type="text" name="invStock" id="invStock" required 
+    <?php if(isset($invStock)){ echo "value='$invStock'"; } 
+    elseif(isset($invInfo['invStock'])) {echo "value='$invInfo[invStock]'"; }?>>
     </td></tr>
 
     <tr><td>
     <label for="invColor">Color<abbr class="req">*</abbr></label>
     </td><td>
-    <input type="text" id="invColor" name="invColor" 
-    <?php
-     if(isset($invColor)){ 
-        echo "value='$invColor'"; } 
-        elseif(isset($invInfo['invColor'])) {
-            echo "value='$invInfo[invColor]'"; 
-    }
-    ?> required>
+    <input type="text" name="invColor" id="invColor" required 
+    <?php if(isset($invColor)){ echo "value='$invColor'"; } 
+    elseif(isset($invInfo['invColor'])) {echo "value='$invInfoinvColor]'"; }?>>
     </td></tr>
 
-    
-   
     <tr><td colspan="2">  
-        <input type="submit" name="submit" id="regbtn" value="Update Vehicle">
-        <!-- Add the action name - value pair -->
-        <input type="hidden" name="action" value="updateVehicle">
-        <input type="hidden" name="invId" value="
+    <input type="submit" name="submit" id="regbtn" value="Update Vehicle">
+    <!-- Add the action name - value pair -->
+    <input type="hidden" name="action" value="updateVehicle">
+    <input type="hidden" name="invId" value="UpdateVehicle"
 <?php if(isset($invInfo['invId'])){ echo $invInfo['invId'];} 
-elseif(isset($invId)){ echo $invId; } ?>">
+elseif(isset($invId)){ echo $invId; } ?>>"
         </td></tr>
  </table>
 </form>
-
-</article>
-</main>
 
 <footer>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>
 </footer>
+
+</article>
+</main>
 
 </body>
 </html>

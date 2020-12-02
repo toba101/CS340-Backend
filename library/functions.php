@@ -14,6 +14,19 @@ function checkPassword($clientPassword){
  return preg_match($pattern, $clientPassword);
 }
 
+//NAVIGATION
+function navList($classifications){
+ 
+    $navList = '<nav><ul class="navigation">';
+    $navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
+    foreach ($classifications as $classification) {
+     $navList .= "<li><a href='/phpmotors/vehicles/?action=classification&classificationName=".urlencode($classification['classificationName'])."' title='View our $classification[classificationName] lineup of vehicles'>$classification[classificationName]</a></li>";
+    }
+    $navList .= '</ul></nav>';
+    
+    return $navList;
+    }
+
 // Build the classifications select list 
 function buildClassificationList($classifications){ 
 $classificationList = '<select name="classificationId" id="classificationList">'; 
@@ -25,6 +38,7 @@ $classificationList .= '</select>';
 return $classificationList; 
 }
 
+// Build a display of vehicles within an unordered list.
 function buildVehiclesDisplay($vehicles){
 $dv = '<ul id="inv-display">';
 foreach ($vehicles as $vehicle) {
@@ -38,6 +52,42 @@ $dv .= '</li>';
 $dv .= '</ul>';
 return $dv;
 }
+
+//Build a vehicle view
+function buildVehicle($vehicle){ 
+    //function buildVehicleId($vehicle){ 
+       //$fmt = numfmt_create('en-US', NumberFormatter::CURRENCY);
+    //$symbol = $fmt->getSymbol(NumberFormatter::INTL_CURRENCY_SYMBOL);
+    //if (isset($vehicle)){
+    $dv = "<img src='$vehicle[invImage]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
+    //return $dv;
+    //added another function to design page layout??????
+    //function buildVehicle($vehicle){
+     $dv .= "<h2>$".number_format($vehicle['invPrice'],2)."</h2>";
+     $dv .= '<hr>';
+    $dv .= "<h2>$vehicle[invMake] $vehicle[invModel]'</h2>";   
+    $dv .= "<p>$vehicle[invDescription]</p>";
+    $dv .= "<p>Color: $vehicle[invColor]</p>";
+    $dv .= "<p># in Stock: $vehicle[invStock]</p>";
+    //$dv .= "<h2>".$fmt->formatCurrency($vehicle['invPrice'],$symbol)."</h2>";
+
+     //$dv .= "$vehicle[invThumbnail]";
+     return $dv;
+    //}else{
+    //    return "";
+    //}
+    
+   }
+//Building thumbnails list 
+   function buildThumbnails($vehicles){
+      //$dv = ""; 
+      $dv = "<ul id='inv-thumbnail'>";
+      foreach ($vehicles as $vehicle) {
+      $dv .= "<li><img src='$vehicle[imgPath]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'></li>";
+      }
+      $dv .= "</ul>";
+       return $dv; 
+     }
 
 /* * ********************************
 *  Functions for working with images
@@ -86,6 +136,7 @@ $filename = $_FILES[$name]['name'];
 if (empty($filename)) {
 return;
 }
+
 // Get the file from the temp folder on the server
 $source = $_FILES[$name]['tmp_name'];
 // Sets the new path - images folder in this directory

@@ -8,7 +8,7 @@ if (isset($_SESSION['message'])) {
 
 <head>
   <meta charset="utf-8">
-  <title>PHP Motors Image Admin |CSE 340</title>
+  <title>PHP Image Management |CSE 340</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/phpmotors/css/small.css" type="text/css" rel="stylesheet" media="screen">
   <link href="/phpmotors/css/large.css" type="text/css" rel="stylesheet" media="screen">
@@ -73,9 +73,7 @@ if (isset($_SESSION['message'])) {
 
 
 
-  
-
-<script>
+  <script>
 function myFunction() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {

@@ -1,14 +1,13 @@
 <?php
 // Get the array of classifications
 
-if(!$_SESSION || !$_SESSION['loggedin']){
+if(!$_SESSION['loggedin']){
   header('Location: /phpmotors');
   //include '/phpmotors';
   exit;
   }
-$classifications = getClassifications();
+//$classifications = getClassifications();
 ?>
-
 <!DOCTYPE html>
 <html lang="en-us">
 
@@ -32,17 +31,10 @@ $classifications = getClassifications();
 
   <nav>
   <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';
-  echo $navList?>
+ ?>
   </nav>
 
-  <main>
-  <main>
   <h1>Admin User</h1>
-  <?php
-if(isset($_SESSION['message'])){
-echo "<h6 color='red'>".$_SESSION['message']."</h6>";
-}
-?>
   <?php if(isset($_SESSION['clientData']['clientFirstname'])){
  echo "<h1>".$_SESSION['clientData']['clientFirstname']." ".$_SESSION['clientData']['clientLastname']."</h1>";
 //DO I HAVE TO DO A WHOLE NEW ECHO?
@@ -69,7 +61,7 @@ echo "<h6 color='red'>".$_SESSION['message']."</h6>";
     <!-- I think I still need to be able to see this if it is an administrator-->
    <!-- DO I NEED THE li????-->
  <!-- <li>
-    //<php
+ //<php
     //if(isset($_SESSION['clientData']['clientLevel'])){
       //echo "<p>Client Level:".$_SESSION['clientData']['clientLevel']."</p>";
     //} 
@@ -77,7 +69,7 @@ echo "<h6 color='red'>".$_SESSION['message']."</h6>";
   <!--<input type="hidden" name="action" value="updateUser">
         <input type="hidden" name="invId" value="
 <php if(isset($clientData['clientLevel'])){ echo $clientData['clientLevel'];} 
-elseif(isset($clientLevel)){ echo $clientLevel; } >"> -->
+elseif(isset($clientLevel)){ echo $clientLevel; } >"> -->  
 <h2>Account Management</h2>
 <p>Use this link to update account information.</p>
 <a href="/phpmotors/accounts?action=clientInfo">Update Client Information</a>
@@ -91,18 +83,15 @@ elseif(isset($clientLevel)){ echo $clientLevel; } >"> -->
   echo "<a href='/phpmotors/vehicles'>Vehicle Management</>";
 }?>
   
-</main>
-  </main>
-  <footer>
-  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
+  <hr>
+
+<footer>
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>
-   </footer>
+</footer>
 
 </article>
-
-   
-
-  
+</main>
 
 <script>
 function myFunction() {

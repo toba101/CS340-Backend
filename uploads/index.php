@@ -1,6 +1,5 @@
 <?php
-
-//Image uploads controller
+//Image uploads controller 
 session_start();
 
 require_once '../library/connections.php';
@@ -12,23 +11,26 @@ require_once '../library/functions.php';
 // Get the array of classifications
 $classifications = getClassifications();
 // Build a navigation bar using the $classifications array
-$navList = buildNavigation($classifications);
-/* * ****************************************************
-* Variables for use with the Image Upload Functionality
-* **************************************************** */
-// directory name where uploaded images are stored
-$image_dir = '/phpmotors/uploads/images';
-// The path is the full path from the server root
-$image_dir_path = $_SERVER['DOCUMENT_ROOT'] . $image_dir;
+//$navList = buildNavigation($classifications);
+$navList = navList($classifications);
 
 $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
 if ($action == NULL) {
  $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 }
 
+/* * ****************************************************
+* Variables for use with the Image Upload Functionality
+* **************************************************** */
+// directory name where uploaded images are stored
+$image_dir = '/phpmotors/images/vehicles';
+// The path is the full path from the server root
+$image_dir_path = $_SERVER['DOCUMENT_ROOT'] . $image_dir;
+
 switch ($action) {
     case 'upload':
-    // Store the incoming vehicle id and primary picture indicator
+        
+// Store the incoming vehicle id and primary picture indicator
 	$invId = filter_input(INPUT_POST, 'invId', FILTER_VALIDATE_INT);
 	$imgPrimary = filter_input(INPUT_POST, 'imgPrimary', FILTER_VALIDATE_INT);
 	
@@ -42,9 +44,11 @@ switch ($action) {
  } elseif (empty($invId) || empty($imgName)) {
   $message = '<p class="notice">You must select a vehicle and image file for the vehicle.</p>';
  } else {
+    
+
   // Upload the image, store the returned path to the file
   $imgPath = uploadFile('file1');
-      
+  
   // Insert the image information to the database, get the result
   $result = storeImages($imgPath, $invId, $imgName, $imgPrimary);
       
@@ -64,6 +68,7 @@ switch ($action) {
 
     break;
     case 'delete':
+   
 // Get the image name and id
 $filename = filter_input(INPUT_GET, 'filename', FILTER_SANITIZE_STRING);
 $imgId = filter_input(INPUT_GET, 'imgId', FILTER_VALIDATE_INT);
@@ -94,10 +99,11 @@ $_SESSION['message'] = $message;
       
 // Redirect to this controller for default action
 header('location: .');
-
+    
     break;
     default:
-// Call function to return image info from database
+
+    // Call function to return image info from database
 $imageArray = getImages();
       
 // Build the image information into HTML for display
@@ -117,5 +123,4 @@ exit;
 
     break;
    }
-
 ?>

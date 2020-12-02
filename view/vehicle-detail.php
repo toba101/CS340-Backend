@@ -33,14 +33,13 @@ echo "<table><tr id='both'><td id='thumb'><h2 class='hidden'>Thumbnails</h2>".$v
 
 <hr>
 
-
-</article>
-</main>
-
 <footer>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>
 </footer>
+
+</article>
+</main>
 
 </body>
 </html

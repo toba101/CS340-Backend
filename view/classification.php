@@ -25,9 +25,6 @@
   ?>
   </nav>
 
-<main>
-<article>
-
 <h1><?php echo $classificationName; ?> vehicles</h1>
 
 <?php if(isset($message)){
@@ -38,21 +35,15 @@
  echo $vehicleDisplay;
 } ?>
 
-</article>
-</main>
-
 <footer>
   <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>
 </footer>
 
 </article>
+</main>
 
-   </main>
-
-  
-
-<script>
+  <script>
 function myFunction() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {

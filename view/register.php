@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/head.php'; ?>
+</head>
 
 <body>
 
+<header>
+ <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php';?>
+</header>
+
+<nav>
+  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php'; ?>
+</nav>
+
 <main>
   <article>  
-  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php';?> 
   
-  <nav>
-  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';
-  ?>
-  </nav>
-
 <h1 class="account-heading">Register</h1>
-
 <?php
 if (isset($message)) {
  echo $message;
@@ -54,6 +57,7 @@ if(isset($clientEmail)){echo "value='$clientEmail'";
   
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php';
 ?>
+
 </article>
 </main>
 

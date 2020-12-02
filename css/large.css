@@ -2,6 +2,7 @@ html{
     box-sizing: border-box;
     margin: 2px;
     padding: 0px;
+    max-width: width 100px; ;
    }
    
    

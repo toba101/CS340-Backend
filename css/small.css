@@ -1,16 +1,13 @@
 html{
   box-sizing: border-box;
   margin: 2px;
-  padding: 0px;
- }
- 
+  padding: 0px; 
+  }
  
  *, *:before, *:after{
   box-sizing: inherit;
  }
  
- 
-  
  .test {
    color: red;
    width: 20px;
@@ -39,8 +36,8 @@ html{
 }
 
 .account {
-  text-align: right;
-  padding-left: 60em;
+  text-align: center;
+  padding-left: 40em;
   margin-top: 2em;
   }
 
