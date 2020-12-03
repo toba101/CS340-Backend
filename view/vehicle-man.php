@@ -45,7 +45,7 @@ if (isset($message)) {
 if (isset($classificationList)) { 
  echo '<h2>Account Management</h2>'; 
  echo '<p class="class">Chose a classification to see those vehicles.</p>'; 
- //echo $classificationList; 
+ echo $classificationList; 
 }
 ?>
 <noscript>

@@ -11,7 +11,7 @@ $classifications = getClassifications();
 // Build the classifications option list
 $classifList = '<select name="classificationId" id="classificationId">';
 $classifList .= "<option>Choose a Car Classification</option>";
-foreach ($carClassifications as $classification) {
+foreach ($classifications as $classification) {
  $classifList .= "<option value='$classification[classificationId]'";
  if(isset($classificationId)){
   if($classification['classificationId'] === $classificationId){
@@ -31,10 +31,12 @@ $classifList .= '</select>';
 
 <head>
   <meta charset="utf-8">
-  <title><?php if(isset($invInfo['invMake']) && isset($invInfo['invModel'])){ 
+  <title>
+  <?php if(isset($invInfo['invMake']) && isset($invInfo['invModel'])){ 
 		echo "Modify $invInfo[invMake] $invInfo[invModel]";} 
 	elseif(isset($invMake) && isset($invModel)) { 
-		echo "Modify $invMake $invModel"; }?>PHP Motors Add Vehicle</title>
+		echo "Modify $invMake $invModel"; }?>
+    </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/phpmotors/css/small.css" type="text/css" rel="stylesheet" media="screen">
   <link href="/phpmotors/css/large.css" type="text/css" rel="stylesheet" media="screen">
@@ -52,15 +54,16 @@ $classifList .= '</select>';
   </nav>
 
   <?php
-if($message){
-echo "<h6 color='red'>".$message."</h6>";
-}
-?>
-<main>
+// if($message){
+// echo "<h6 color='red'>".$message."</h6>";
+// }
+// ?>
+
 <h1><?php if(isset($invInfo['invMake']) && isset($invInfo['invModel'])){ 
 		echo "Modify $invInfo[invMake] $invInfo[invModel]";} 
 	elseif(isset($invMake) && isset($invModel)) { 
-		echo "Modify $invMake $invModel"; }?></h1>
+		echo "Modify $invMake $invModel"; }?>
+</h1>
 <p>*All fields are required</p>
 
 <form class="add" action="/phpmotors/vehicles/index.php" method="post">
@@ -68,8 +71,10 @@ echo "<h6 color='red'>".$message."</h6>";
  <tr><td>
     <label id="classificationId">Classification<abbr class="req">*</abbr></label>
     </td><td>
-  <?php echo $classificationDropDown; ?>
+  <?php echo $classifList; ?>
  </td></tr>
+
+
      
  <tr><td>
     <label for="invMake">Make<abbr class="req">*</abbr></label>
@@ -147,12 +152,13 @@ echo "<h6 color='red'>".$message."</h6>";
     </td></tr>
 
     <tr><td colspan="2">  
-    <input type="submit" name="submit" id="regbtn" value="Update Vehicle">
+     <!-- <input type="submit" name="submit" id="regbtn" value="Update Vehicle"> -->
+     <input type="submit" valu="update Vehicle">
     <!-- Add the action name - value pair -->
     <input type="hidden" name="action" value="updateVehicle">
     <input type="hidden" name="invId" value="UpdateVehicle"
-<?php if(isset($invInfo['invId'])){ echo $invInfo['invId'];} 
-elseif(isset($invId)){ echo $invId; } ?>>"
+    <?php if(isset($invInfo['invId'])){ echo $invInfo['invId'];} 
+    elseif(isset($invId)){ echo $invId; } ?>>"
         </td></tr>
  </table>
 </form>

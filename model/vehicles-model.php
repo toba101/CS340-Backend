@@ -86,7 +86,7 @@ function getInventoryByClassification($classificationId){
    // Get vehicle information by invId
 function getInvItemInfo($invId){
     $db = phpmotorsConnect();
-    $sql = "SELECT * FROM inventory INNER JOIN images ON inventory.invId=images.invId WHERE invId = :invId and imgPath NOT LIKE '%-tn%'";
+    $sql = "SELECT * FROM inventory INNER JOIN images ON inventory.invId=images.invId WHERE inventory.invId = :invId and imgPath NOT LIKE '%-tn%'";
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
     $stmt->execute();
@@ -143,7 +143,7 @@ function getVehiclesByClassification($classificationName){
 //Get vehicle information
 function getVehicleById($invId){
     $db = phpmotorsConnect();
-    $sql = "SELECT * FROM inventory INNER JOIN images ON inventory.invId=images.invId WHERE inventory.invId=:invId and imgPath NOT LIKE '%-tn%'";
+    $sql = "SELECT * FROM inventory INNER JOIN images ON inventory.invId=images.invId WHERE invId =:invId and imgPath NOT LIKE '%-tn%'";
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':invId', $invId, PDO::PARAM_STR);
     $stmt->execute();

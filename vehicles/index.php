@@ -46,13 +46,15 @@ require_once '../model/vehicles-model.php';
        header('Location: /index.php');
       }
       break;
+      
     case 'add-vehicle':
       if (isset($_SESSION['loggedin']) && $_SESSION['clientData']['clientLevel']>1){
-        include '../view/vehicle-update.php';
+        include '../view/vehicles-update.php';
       } else {
        header('Location: /index.php');
       }
       break;
+
     case 'adding-classification':
         // Filter and store the data
         $classificationName = filter_input(INPUT_POST, 'classificationName', FILTER_SANITIZE_STRING);
