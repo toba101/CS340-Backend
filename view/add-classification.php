@@ -29,10 +29,10 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
   </nav>
 
   <?php
-    if($message){
-echo "<h6 color='red'>".$message."</h6>";
-}
-?>
+    if(isset($message)){
+    echo "<h6 color='red'>".$message."</h6>";
+    }
+  ?>
 
   <h1>Add Car Classification</h1>
 <form class="add" action="/phpmotors/vehicles/index.php" method="post">

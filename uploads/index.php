@@ -29,8 +29,7 @@ $image_dir_path = $_SERVER['DOCUMENT_ROOT'] . $image_dir;
 
 switch ($action) {
     case 'upload':
-        
-// Store the incoming vehicle id and primary picture indicator
+  // Store the incoming vehicle id and primary picture indicator
 	$invId = filter_input(INPUT_POST, 'invId', FILTER_VALIDATE_INT);
 	$imgPrimary = filter_input(INPUT_POST, 'imgPrimary', FILTER_VALIDATE_INT);
 	
@@ -44,11 +43,9 @@ switch ($action) {
  } elseif (empty($invId) || empty($imgName)) {
   $message = '<p class="notice">You must select a vehicle and image file for the vehicle.</p>';
  } else {
-    
-
   // Upload the image, store the returned path to the file
   $imgPath = uploadFile('file1');
-  
+      
   // Insert the image information to the database, get the result
   $result = storeImages($imgPath, $invId, $imgName, $imgPrimary);
       
@@ -64,12 +61,11 @@ switch ($action) {
  $_SESSION['message'] = $message;
       
  // Redirect to this controller for default action
- header('location: .');
-
+ header('location: .');      
     break;
+
     case 'delete':
-   
-// Get the image name and id
+   // Get the image name and id
 $filename = filter_input(INPUT_GET, 'filename', FILTER_SANITIZE_STRING);
 $imgId = filter_input(INPUT_GET, 'imgId', FILTER_VALIDATE_INT);
       
@@ -99,7 +95,7 @@ $_SESSION['message'] = $message;
       
 // Redirect to this controller for default action
 header('location: .');
-    
+
     break;
     default:
 
@@ -121,6 +117,9 @@ $prodSelect = buildVehiclesSelect($vehicles);
 include '../view/image-admin.php';
 exit;
 
-    break;
-   }
+break;
+}
+//    default:
+//         include '../view/image-admin.php';
+//         break;
 ?>

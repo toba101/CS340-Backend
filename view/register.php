@@ -6,6 +6,8 @@
 </head>
 
 <body>
+<main>
+<article>
 
 <header>
  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php';?>

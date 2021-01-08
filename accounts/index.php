@@ -8,6 +8,8 @@ require_once '../model/main-model.php';
 require_once '../model/accounts-model.php';
 // Get the functions library
 require_once '../library/functions.php';
+//Get the reviews model
+require_once '../model/reviews-model.php';
 
 // Create or access a Session
 session_start();
@@ -15,17 +17,19 @@ session_start();
 // Get the array of classifications 
 $classifications = getClassifications();
 
+$navList = navList($classifications);
+
 //var_dump($classifications);
 //exit;
 
-// Build a navigation bar using the $classifications array
-$navList = '<nav><ul class="navigation">';
-$navList .= "<li><a href='/phpmotors/index.php' title= 'View the PHP Motors home page'>Home</a><li>";
-foreach ($classifications as $classification) {
-    $navList .= "<li><a href='/phpmotors/index.php?action=" .urlencode($classification['classificationName'])
-    . "' title=view our $classification[classificationName] product line'<$classification[classificationName]</a></li>";
-}                
-$navList .= '</ul>';
+// // Build a navigation bar using the $classifications array
+// $navList = '<nav><ul class="navigation">';
+// $navList .= "<li><a href='/phpmotors/index.php' title= 'View the PHP Motors home page'>Home</a><li>";
+// foreach ($classifications as $classification) {
+//     $navList .= "<li><a href='/phpmotors/index.php?action=" .urlencode($classification['classificationName'])
+//     . "' title=view our $classification[classificationName] product line'<$classification[classificationName]</a></li>";
+// }                
+// $navList .= '</ul>';
 
 // Check if the firstname cookie exists, get its value
 if(isset($_COOKIE['firstname'])){
@@ -41,15 +45,11 @@ if ($action == NULL) {
    
 switch ($action) {
     case 'login':
-        // case 'template':
-        // include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/login.php';
         include '../view/login.php';
         break;
-
     case 'register-page':
         include '../view/register.php';
         break;
-
     case 'Login':
         // case 'template':
         // include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/view/login.php';
@@ -98,6 +98,46 @@ switch ($action) {
     break; 
 
     case 'register':
+        //Filter & store the data
+        $clientFirstname = filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING);
+        $clientLastname = filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING);
+        $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
+        $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
+        $clientEmail = checkEmail($clientEmail);
+        $checkPassword = checkPassword($clientPassword);
+
+        //Check for existing email
+        $existingEmail = checkExistingEmail($clientEmail);
+
+        //Deal with existing email during registration
+        if ($existingEmail) {
+            $message = '<p>The email address is already registered. Please login or register using a new email address.</p>';
+            include '../view/login.php';
+            exit;
+        }
+
+        //Check for missing data
+        if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($checkPassword)) {
+            $message = '<p>Please provide information for all empty form fields.</p>';
+            include '../view/register.php';
+            exit;
+        }
+        //Hash the password for protection!
+        $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+
+        //Insert the data
+        $regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail, $hashedPassword);
+        if ($regOutcome === 1) {
+            $_SESSION['message'] = "<p>Thanks for registering, $clientFirstname. Please use your email and password to login.</p>";
+            setcookie('firstname', $clientFirstname,/* 'lastname', $clientLastname,*/ strtotime('+1 year'), "/");
+
+            header('Location: /phpmotors/accounts/?action=login');
+            exit;
+        } else {
+            $message = "<p>Sorry, $clientFirstname, but the registration failed. Please try again.</p>";
+            include '../view/register.php';
+            exit;
+        }
         include '../view/register.php';
         break;
 

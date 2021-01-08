@@ -1,6 +1,5 @@
 <?php
-
- // Validate email address
+// Validate email address
 function checkEmail($clientEmail){
  $valEmail = filter_var($clientEmail, FILTER_VALIDATE_EMAIL);
  return $valEmail;
@@ -17,14 +16,15 @@ function checkPassword($clientPassword){
 //NAVIGATION
 function navList($classifications){
  
-    $navList = '<nav><ul class="navigation">';
-    $navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
+    $navList = '<ul class="navigation">';
+    $navList .= "<li><a href='/phpmotors/' title='View the PHP Motors home page'>Home</a></li>";
     foreach ($classifications as $classification) {
-     $navList .= "<li><a href='/phpmotors/vehicles/?action=classification&classificationName=".urlencode($classification['classificationName'])."' title='View our $classification[classificationName] lineup of vehicles'>$classification[classificationName]</a></li>";
+       $navList .= "<li><a href='/phpmotors/vehicles/?action=classification&classificationName="
+       .urlencode($classification['classificationName'])."' title='View our $classification[classificationName] 
+       lineup of vehicles'>$classification[classificationName]</a></li>";
     }
-    $navList .= '</ul></nav>';
-    
-    return $navList;
+       $navList .= '';
+       return $navList;
     }
 
 // Build the classifications select list 
@@ -39,45 +39,81 @@ return $classificationList;
 }
 
 // Build a display of vehicles within an unordered list.
-function buildVehiclesDisplay($vehicles){
-$dv = '<ul id="inv-display">';
-foreach ($vehicles as $vehicle) {
+function buildVehiclesDisplay($vehicles) {
+    $price = number_format($vehicle['invPrice']);
+   // var_dump($vehicles);
+   $dv = '<ul id="inv-display">';
+   foreach ($vehicles as $vehicle) {
+      // wrap in <a> tag which points to the controller  with the appropriate action name to display single vehicle
+      // echo $vehicle['invId'];
+
+// Fix the path to go through the controller and pass a vehicle id
 $dv .= '<li>';
-$dv .= "<img src='$vehicle[invThumbnail]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
+$dv .= "<a href='index.php?action=vehicleDetails&invId=$vehicle[invId]'>";
+$dv .= "<img src='$vehicle[imgPath]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
 $dv .= '<hr>';
 $dv .= "<h2>$vehicle[invMake] $vehicle[invModel]</h2>";
 $dv .= "<span>$vehicle[invPrice]</span>";
 $dv .= '</li>';
+$dv .= '</a>';
 }
+   // closing <a> tag
 $dv .= '</ul>';
 return $dv;
 }
 
-//Build a vehicle view
-function buildVehicle($vehicle){ 
-    //function buildVehicleId($vehicle){ 
-       //$fmt = numfmt_create('en-US', NumberFormatter::CURRENCY);
-    //$symbol = $fmt->getSymbol(NumberFormatter::INTL_CURRENCY_SYMBOL);
-    //if (isset($vehicle)){
-    $dv = "<img src='$vehicle[invImage]' alt='Image of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
-    //return $dv;
-    //added another function to design page layout??????
-    //function buildVehicle($vehicle){
-     $dv .= "<h2>$".number_format($vehicle['invPrice'],2)."</h2>";
-     $dv .= '<hr>';
-    $dv .= "<h2>$vehicle[invMake] $vehicle[invModel]'</h2>";   
-    $dv .= "<p>$vehicle[invDescription]</p>";
-    $dv .= "<p>Color: $vehicle[invColor]</p>";
-    $dv .= "<p># in Stock: $vehicle[invStock]</p>";
+ //Build a vehicle view
+  function buildVehicle($vehicle){ 
+     $color = $vehicle[0]['invColor'];
+     $invModel = $vehicle[0]['invModel'];
+     $invMake = $vehicle[0]['invMake'];
+     $invDescription = $vehicle[0]['invDescription'];
+   //   $invThumbnail = $vehicle[0][invThumbnail];
+     $invPrice = $vehicle[0]['invPrice'];
+     $invStock = $vehicle[0]['invStock'];
+     $invId = $vehicle[0]['invId'];
+     $classificationId = $vehicle[0]['classificationId'];
+     $imagePath = $vehicle[0]['imgPath'];
+
+
+   //   var_dump($vehicle);
+     $dv = "<p>Color: $color</p>";
+     $dv .= "<p>invModel: $invModel</p>";
+     $dv .= "<p>invMake: $invMake</p>";
+     $dv .= "<p>invDescription: $invDescription</p>";
+   //   $dv .= "<p>invThumbnail: $invThumbnail</p>";
+     $dv .= "<p>invPrice: $invPrice</p>";
+     $dv .= "<p>invStock: $invStock</p>";
+     $dv .= "<p>invPrice: $invPrice</p>";
+     $dv .= "<p>invId: $invId</p>";
+     $dv .= "<p>classificationId: $classificationId</p>";
+     $dv .= "<img src ='$imagePath' alt='Picture of $invMake $invModel on phpmotors.com'>";
+
+
+
+   // function buildVehicleId($vehicle){ //1
+     // $fmt = numfmt_create('en-US', NumberFormatter::CURRENCY); //2
+   // $symbol = $fmt->getSymbol(NumberFormatter::INTL_CURRENCY_SYMBOL); //3
+    //if (isset($vehicle)){ //4
+   //  $dv .= "<a href='index.php?action=vehicleInfo&invId=$vehicle[invId]'><img src ='$vehicle[imgPath]' alt='Picture of $vehicle[invMake] $vehicle[invModel] on phpmotors.com'>";
+   //  //return $dv; //
+   // //added another function to design page layout??????
+   //  //function buildVehicle($vehicle){
+   //   $dv .= "<h2>$".number_format($vehicle['invPrice'],2)."</h2>";
+   //   $dv .= '<hr>';
+   //  $dv .= "<h2>$vehicle[invMake] $vehicle[invModel]'</h2>";   
+   //  $dv .= "<p>$vehicle[invDescription]</p>";
+   //  $dv .= "<p>Color: $vehicle[invColor]</p>";
+   //  $dv .= "<p># in Stock: $vehicle[invStock]</p>";
     //$dv .= "<h2>".$fmt->formatCurrency($vehicle['invPrice'],$symbol)."</h2>";
 
-     //$dv .= "$vehicle[invThumbnail]";
+    //$dv .= "$vehicle[invThumbnail]";
      return $dv;
     //}else{
     //    return "";
     //}
-    
-   }
+    }
+   
 //Building thumbnails list 
    function buildThumbnails($vehicles){
       //$dv = ""; 
@@ -184,18 +220,20 @@ case IMAGETYPE_JPEG:
 $image_from_file = 'imagecreatefromjpeg';
 $image_to_file = 'imagejpeg';
 break;
+
 case IMAGETYPE_GIF:
 $image_from_file = 'imagecreatefromgif';
 $image_to_file = 'imagegif';
 break;
+
 case IMAGETYPE_PNG:
 $image_from_file = 'imagecreatefrompng';
 $image_to_file = 'imagepng';
 break;
 default:
- return;
+return;
 } 
-// ends the swith
+// ends the switch
    
 // Get the old image and its height and width
 $old_image = $image_from_file($old_image_path);
@@ -245,6 +283,4 @@ $image_to_file($old_image, $new_image_path);
 }
 // Free any memory associated with the old image
 imagedestroy($old_image);
-} // ends resizeImage function
-
-?>
+}

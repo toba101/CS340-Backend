@@ -1,4 +1,4 @@
-<nav>
+<!-- <nav>
      <div class="topnav" id="myTopnav">
        <ul>       
            <li><a href="home.php">Home</a></li>
@@ -12,5 +12,10 @@
             <i class="fa fa-bars"></i>
             </a>
      </div>
-  </nav> 
+  </nav>  -->
 
+<nav>
+  <div class="topnav" id="myTopnav">
+  <?php echo $navList; ?>
+  </div>
+</nav>

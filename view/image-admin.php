@@ -86,4 +86,4 @@ function myFunction() {
 
 </body>
 </html>
-<?php unset($_SESSION['message']); ?>
+<!-- <?php unset($_SESSION['message']); ?> -->

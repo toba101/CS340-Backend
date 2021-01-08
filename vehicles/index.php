@@ -6,6 +6,8 @@
 // Create or access a Session
 session_start();
 
+// Dynamic Navigation
+
 // Get the database connection file
 require_once '../library/connections.php';
 // Get the database connection file
@@ -13,25 +15,29 @@ require_once '../library/functions.php';
 // Get the PHP Motors model for use as needed
 require_once '../model/main-model.php';
 // Get the accounts model
-// require_once '../model/classification-model.php';
+// require_once '../models/reviews-model.php';
 // Get the accounts model
 require_once '../model/vehicles-model.php';
+//Get the uploads model
+// require_once '../models/uploads-model.php';
 
+// $categories = getClassifications();
+// $navList = navList($categories);
 
  // Get the array of classifications
  $classifications = getClassifications();
-
+ $navList = navList($classifications);
 // var_dump($classifications);
 // exit;
 // Build a navigation bar using the $classifications array
- $navList = '<ul>';
- $navList .= "<li><a href='/index.php' title='View the PHP Motors home page'>Home</a></li>";
- foreach ($classifications as $classification) {
-  $navList .= "<li> <a href='/vehicles/?action=classification&classificationName="
-    .urlencode($classification['classificationName']).
-    "' title='View our $classification[classificationName] lineup of vehicles'>$classification[classificationName]</a> </li>";
- }
- $navList .= '</ul>';
+//  $navList = '<ul>';
+//  $navList .= "<li><a href='/index.php' title='View the PHP Motors home page'>Home</a></li>";
+//  foreach ($classifications as $classification) {
+//   $navList .= "<li> <a href='/vehicles/?action=classification&classificationName="
+//     .urlencode($classification['classificationName']).
+//     "' title='View our $classification[classificationName] lineup of vehicles'>$classification[classificationName]</a> </li>";
+//  }
+//  $navList .= '</ul>';
 
  $action = filter_input(INPUT_GET, 'action');
  if($action == NULL) {
@@ -47,12 +53,20 @@ require_once '../model/vehicles-model.php';
       }
       break;
       
-    case 'add-vehicle':
-      if (isset($_SESSION['loggedin']) && $_SESSION['clientData']['clientLevel']>1){
-        include '../view/vehicles-update.php';
-      } else {
-       header('Location: /index.php');
-      }
+    // case 'add-vehicle':
+    //   if (isset($_SESSION['loggedin']) && $_SESSION['clientData']['clientLevel']>1){
+    //     include '../view/vehicles-update.php';
+    //   } else {
+    //    header('Location: /index.php');
+    //   }
+    //   break;
+
+      case 'add-vehicle':
+      // if (isset($_SESSION['loggedin']) && $_SESSION['clientData']['clientLevel']>1){
+        include '../view/add-vehicles.php';
+      // } else {
+      //  header('Location: /index.php');
+      // }
       break;
 
     case 'adding-classification':
@@ -136,15 +150,22 @@ require_once '../model/vehicles-model.php';
       }
       break;
     
-    case 'mod':
-      $invId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-      $invInfo = getInvItemInfo($invId);
-      if(count($invInfo)<1){
-        $message = 'Sorry, no vehicle information could be found.';
-      }
-      include '../view/vehicle-update.php';
-      exit;
-      break;
+   case 'mod':
+        //get the inventory id
+        $invId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        //get the info on that item based on id
+        $invInfo = getInvItemInfo($invId);
+
+        // // echo $invId;
+        // var_dump($invInfo);
+
+        //If no info, display message
+        if (count($invInfo) < 1) {
+            $message = 'Sorry, no vehicle information could be found.';
+        }
+        include '../view/vehicle-update.php';
+        exit;
+        break;
 
     /* * ********************************** 
     * Get vehicles by classificationId 
@@ -170,24 +191,29 @@ require_once '../model/vehicles-model.php';
       $invStock = filter_input(INPUT_POST, 'invStock', FILTER_SANITIZE_NUMBER_INT);
       $invColor = filter_input(INPUT_POST, 'invColor', FILTER_SANITIZE_STRING);
       $invId = filter_input(INPUT_POST, 'invId', FILTER_SANITIZE_NUMBER_INT);
-      
-      if (empty($classificationId) || empty($invMake) || empty($invModel) || empty($invDescription) || empty($invImage) || empty($invThumbnail) || empty($invPrice) || empty($invStock) || empty($invColor)) {
-      $message = '<p>Please complete all information for the updated item! Double check the classification of the item.</p>';
+
+      //Check for missing data
+      if (empty($classificationId) || empty($invMake) || empty($invModel)
+          || empty($invDescription) || empty($invImage) || empty($invThumbnail)
+          || empty($invPrice) || empty($invStock) || empty($invColor)) {
+          $message = '<p>Please complete all information for the item! Double check the classification of the item.</p>';
       include '../view/vehicle-update.php';
       exit;
       }
-      $updateResult = updateVehicle($invMake, $invModel, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invColor, $classificationId, $invId);
+
+      $updateResult = updateVehicle($invMake, $invModel, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invColor, $classificationId,$invId);
       if ($updateResult) {
-        $message = "<p class='notify'>Congratulations, the $invMake $invModel was successfully updated.</p>";
+        $message = "<p class='notice'>Congratulations, the $invMake $invModel was successfully updated.</p>";
         $_SESSION['message'] = $message;
-        header('location: /vehicles/index.php?action=vehicle');
-        exit;
-       } else {
-        $message = "<p>Error. The vehicle was not updated.</p>";
-        include '../view/vehicle-update.php';
-        exit;
+        header('location: /phpmotors/vehicles/');
+      exit;
+      } else {
+        $message = "<p class='notice'>Error. The $invMake $invModel was not updated.</p>";
+      include '../view/vehicle-update.php';
+      exit;
       }
       break;
+
   case 'del':
     $invId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
     $invInfo = getInvItemInfo($invId);
@@ -197,6 +223,7 @@ require_once '../model/vehicles-model.php';
       include '../view/vehicle-delete.php';
       exit;
       break;
+
   case 'deleteVehicle':
     $invMake = filter_input(INPUT_POST, 'invMake', FILTER_SANITIZE_STRING);
     $invModel = filter_input(INPUT_POST, 'invModel', FILTER_SANITIZE_STRING);
@@ -216,25 +243,40 @@ require_once '../model/vehicles-model.php';
       exit;
     }
     break;
+
     case 'classification':
-      $classificationName = filter_input(INPUT_GET, 'classificationName', FILTER_SANITIZE_STRING);
+      $classificationName = filter_input(INPUT_GET, 
+      'classificationName', FILTER_SANITIZE_STRING);
       $vehicles = getVehiclesByClassification($classificationName);
-      if(!count($vehicles)){
+      if (!count($vehicles)){
        $message = "<p class='notice'>Sorry, no $classificationName could be found.</p>";
       } else {
        $vehicleDisplay = buildVehiclesDisplay($vehicles);
       }
       include '../view/classification.php';
       break;
+
     case 'vehicleDetails':
-      $invId = filter_input(INPUT_GET, 'invid', FILTER_VALIDATE_INT);
-      $vehicleData = getInvItemInfo($invId);
-      $_SESSION['vehicleData'] = $vehicleData;
+      $invId = filter_input(INPUT_GET, 'invId', FILTER_VALIDATE_INT);
+
+      $vehicle = getInvItemInfo($invId);
+
+      $vehicleDisplay = buildVehicle($vehicle);
+
+      // echo 'this is an id: '. $invId;
+      // var_dump($vehicleData);
+
+      // Create review Info
+      // $reviews = getreviews($invId);
+
+      // $_SESSION['vehicleData'] = $vehicleData;
       include '../view/vehicle-detail.php';
       break;
     default:
       $classificationList = buildClassificationList($classifications);
       include '../view/vehicle-man.php';
       break;
+
+
    
 }

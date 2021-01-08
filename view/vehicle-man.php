@@ -1,9 +1,9 @@
 <?php
 // Get the array of classifications
-
 if(!$_SESSION['loggedin']){
-  header('Location: /phpmotors');
-  //include '/phpmotors';
+    header('Location: /phpmotors/index.php');
+  
+  
   exit;
   }
   if (isset($_SESSION['message'])) {
@@ -30,8 +30,8 @@ if(!$_SESSION['loggedin']){
 </header> 
 
 <nav>
-  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';
- ?>
+  <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';?> 
+  
 </nav>
 
  <h2> Vehicle Management </h2>

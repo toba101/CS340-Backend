@@ -10,7 +10,7 @@ $classifications = getClassifications();
 
 $classificationDropDown = '<select id="classification" name="classificationId">';
 $classificationDropDown .= '<option>Choose a car classification</option>';
-foreach ($classificationList as $classification) {
+foreach ($classifications as $classification) {
  $classificationDropDown .= "<option value='$classification[classificationId]'";
 
 
@@ -45,6 +45,7 @@ $classificationDropDown .= '</select>';
 <nav>
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/navigation.php';?>
+echo NavList
 </nav>
   
   <h1> Add Vehicle </h1>

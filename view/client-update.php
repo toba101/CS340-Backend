@@ -2,7 +2,7 @@
 // Get the array of classifications
 
 if(!$_SESSION || !$_SESSION['loggedin']){
-    header('Location: /phpmotors');
+    header('Location: /phpmotors/index.php');
     //include '/phpmotors';
     exit;
     }
@@ -11,12 +11,7 @@ if(!$_SESSION || !$_SESSION['loggedin']){
 <html lang="en-us">
 
 <head>
-  <meta charset="utf-8">
-  <title>PHP Motors Client Update</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/phpmotors/css/small.css" type="text/css" rel="stylesheet" media="screen">
-  <link href="/phpmotors/css/large.css" type="text/css" rel="stylesheet" media="screen">
-
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/head.php'; ?>
 </head>
 
 <body>
