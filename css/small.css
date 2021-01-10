@@ -27,7 +27,7 @@ html{
   article {
     max-width: 100em;
     background-color: #ffff;
-    border: solid #4c96d7;;
+    border: solid #4c96d7;
 }
 
   header {
@@ -121,8 +121,8 @@ ul {
 
 /* MAIN */
  .content {
-    padding-left: 1em;
-    margin: 2em;
+    padding-left: 1rem;
+    margin: 2rem;
   }  
 
   .camaro {
@@ -141,7 +141,7 @@ ul {
      color: #0a96f3;
  }
 
- button {
+ buttons {
   padding-left: 3em;
   margin-right: 10px;
   background-color: rgb(14, 151, 231);
