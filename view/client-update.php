@@ -1,5 +1,4 @@
 <?php
-// Get the array of classifications
 
 if(!$_SESSION || !$_SESSION['loggedin']){
     header('Location: /phpmotors/index.php');

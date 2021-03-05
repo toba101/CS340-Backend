@@ -5,7 +5,7 @@ function checkEmail($clientEmail){
  return $valEmail;
 }
 
-// Check the password for a minimum of 8 characters,
+// Check the password for a minimum of 8 characters.
  // at least one 1 capital letter, at least 1 number and
  // at least 1 special character
 function checkPassword($clientPassword){
@@ -40,7 +40,7 @@ return $classificationList;
 
 // Build a display of vehicles within an unordered list.
 function buildVehiclesDisplay($vehicles) {
-    $price = number_format($vehicle['invPrice']);
+    $price = number_format($vehicles['invPrice']);
    // var_dump($vehicles);
    $dv = '<ul id="inv-display">';
    foreach ($vehicles as $vehicle) {

@@ -78,9 +78,9 @@ require_once '../model/vehicles-model.php';
         include '../view/add-classification.php';
         exit;
       }
-      
-      // Send the data to the model
-      $regOutcome = regClassification($classificationName);
+
+    // Send the data to the model
+    $regOutcome = addClassification($classificationName);
       
       // Check and report the result
       if($regOutcome === 1){
@@ -123,9 +123,19 @@ require_once '../model/vehicles-model.php';
           include '../view/add-vehicle.php';
           exit;
         }
-        
-        // Send the data to the model
-        $regOutcome = regVehicle($invMake, $invModel, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invColor, $classificationId);
+
+    // Send the data to the model
+    $regOutcome = addVehicle(
+      $invMake,
+      $invModel,
+      $invDescription,
+      $invImage,
+      $invThumbnail,
+      $invPrice,
+      $invStock,
+      $invColor,
+      $classificationId
+    );
         
         // Check and report the result
         if($regOutcome === 1){

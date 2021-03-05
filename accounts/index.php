@@ -1,4 +1,6 @@
 <?php
+// Create or access a Session
+session_start();
 
 // Get the database connection file
 require_once '../library/connections.php';
@@ -11,8 +13,6 @@ require_once '../library/functions.php';
 //Get the reviews model
 require_once '../model/reviews-model.php';
 
-// Create or access a Session
-session_start();
 
 // Get the array of classifications 
 $classifications = getClassifications();

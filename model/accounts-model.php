@@ -2,8 +2,8 @@
 //ACCOUNTS MODEL
 
 //Register new client
-function regClient($clientFirstname, $clientLastname, $clientEmail, $clientPassword)
-{
+function regClient($clientFirstname, $clientLastname, $clientEmail, 
+$clientPassword){
     $db = phpmotorsConnect();
 
     //The SQL statement
